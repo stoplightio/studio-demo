@@ -1,5 +1,5 @@
 ---
-tags: [01. Using Markdown]
+tags: [Reference]
 ---
 
 # Stoplight Flavored Markdown (SMD)
