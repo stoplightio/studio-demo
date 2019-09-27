@@ -164,9 +164,6 @@
       "post": {
         "operationId": "POST_todos",
         "summary": "Create Todo",
-        "tags": [
-          "Todos"
-        ],
         "parameters": [
           {
             "name": "body",
@@ -209,7 +206,11 @@
             "apikey": []
           }
         ],
-        "description": "This creates a Todo object.\n\nTesting `inline code`."
+        "description": "This creates a Todo object.\n\nTesting `inline code`.",
+        "tags": [
+          "Endpoints",
+          "Todos"
+        ]
       },
       "get": {
         "operationId": "GET_todos",
