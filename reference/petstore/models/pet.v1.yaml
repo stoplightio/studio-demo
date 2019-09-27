@@ -1,8 +1,6 @@
 title: Pet
 description: A single pet.
 type: object
-x-tags:
-  - Pets
 xml:
   name: Pet
 properties:
@@ -31,3 +29,6 @@ properties:
 required:
   - name
   - photoUrls
+x-tags:
+  - Models
+  - Petstore

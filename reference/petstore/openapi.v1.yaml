@@ -11,8 +11,6 @@ paths:
     get:
       summary: List all pets
       operationId: listPets
-      tags:
-        - pets
       parameters:
         - name: limit
           in: query
@@ -39,11 +37,13 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+      tags:
+        - Endpoints
+        - Petstore
+      description: ''
     post:
       summary: Create a pet
       operationId: createPets
-      tags:
-        - pets
       responses:
         '201':
           description: Null response
@@ -53,12 +53,17 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+      tags:
+        - Endpoints
+        - Petstore
+      description: ''
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
       operationId: showPetById
       tags:
-        - pets
+        - Endpoints
+        - Petstore
       parameters:
         - name: petId
           in: path
@@ -85,7 +90,8 @@ components:
       type: array
       items:
         $ref: ./models/pet.v1.yaml
-      x-tags:
-        - Pets
       title: Pets
       description: A list of pets.
+      x-tags:
+        - Models
+        - Petstore

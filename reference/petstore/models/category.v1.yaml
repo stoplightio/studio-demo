@@ -7,4 +7,4 @@ properties:
 required:
   - name
 x-tags:
-  - Pets
+  - Models
