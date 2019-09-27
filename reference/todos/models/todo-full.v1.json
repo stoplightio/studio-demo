@@ -28,7 +28,7 @@
           "format": "date-time"
         },
         "user": {
-          "$ref": "http://localhost:8080/api/nodes.raw?srn=gh/dgrstl/master-data-demo/reference/common/models/user.json&mid=1"
+          "$ref": "./user.v1.json"
         }
       },
       "required": [
