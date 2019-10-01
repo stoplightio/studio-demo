@@ -2,7 +2,7 @@
 tags: [Introduction]
 ---
 
-# Changed Introduction from outside Studio
+# Introduction
 
 Studio is our next generation app for API design, modeling, and technical writing. 
 
