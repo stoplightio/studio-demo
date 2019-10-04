@@ -18,6 +18,7 @@ paths:
           content:
             application/json:
               schema:
+                description: foo
                 $ref: ../todos/models/user.v1.json
       description: a
 components:

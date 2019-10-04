@@ -228,6 +228,7 @@
             "description": "",
             "schema": {
               "type": "array",
+              "description": "",
               "items": {
                 "$ref": "./models/todo-full.v1.json"
               }
