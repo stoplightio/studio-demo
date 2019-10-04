@@ -1,0 +1,12 @@
+title: mymodel
+type: object
+properties:
+  id:
+    type: string
+  a:
+    type: string
+  bq:
+    type:
+      - string
+      - number
+description: ff

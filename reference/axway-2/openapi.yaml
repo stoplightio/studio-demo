@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: axway
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /getstuff:
+    get:
+      summary: aa
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/mymodel.v1.yaml
+components:
+  schemas: {}
