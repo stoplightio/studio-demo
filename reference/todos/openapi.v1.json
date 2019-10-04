@@ -48,9 +48,6 @@
       "get": {
         "operationId": "GET_todo",
         "summary": "Get Todo",
-        "tags": [
-          "Todos"
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -74,14 +71,16 @@
           "500": {
             "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
-        }
+        },
+        "tags": [
+          "Endpoints",
+          "Todos"
+        ],
+        "description": ""
       },
       "put": {
         "operationId": "PUT_todos",
         "summary": "Update Todo",
-        "tags": [
-          "Todos"
-        ],
         "parameters": [
           {
             "name": "body",
@@ -126,14 +125,16 @@
           {
             "apikey": []
           }
-        ]
+        ],
+        "tags": [
+          "Endpoints",
+          "Todos"
+        ],
+        "description": ""
       },
       "delete": {
         "operationId": "DELETE_todo",
         "summary": "Delete Todo",
-        "tags": [
-          "Todos"
-        ],
         "responses": {
           "204": {
             "description": ""
@@ -152,6 +153,10 @@
           {
             "apikey": []
           }
+        ],
+        "tags": [
+          "Endpoints",
+          "Todos"
         ]
       }
     },
@@ -159,9 +164,6 @@
       "post": {
         "operationId": "POST_todos",
         "summary": "Create Todo",
-        "tags": [
-          "Todos"
-        ],
         "parameters": [
           {
             "name": "body",
@@ -204,14 +206,15 @@
             "apikey": []
           }
         ],
-        "description": "This creates a Todo object.\n\nTesting `inline code`."
+        "description": "This creates a Todo object.\n\nTesting `inline code`.",
+        "tags": [
+          "Endpoints",
+          "Todos"
+        ]
       },
       "get": {
         "operationId": "GET_todos",
         "summary": "List Todos",
-        "tags": [
-          "Todos"
-        ],
         "parameters": [
           {
             "$ref": "../common/openapi.v1.yaml#/parameters/limit"
@@ -225,6 +228,7 @@
             "description": "",
             "schema": {
               "type": "array",
+              "description": "",
               "items": {
                 "$ref": "./models/todo-full.v1.json"
               }
@@ -252,7 +256,11 @@
           "500": {
             "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
-        }
+        },
+        "tags": [
+          "Endpoints",
+          "Todos"
+        ]
       }
     }
   }

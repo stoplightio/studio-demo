@@ -1,0 +1,12 @@
+title: mymodel
+type: object
+description: ff
+properties:
+  kkk:
+    type: string
+  hhhhh:
+    type: string
+  bq:
+    type:
+      - string
+      - number

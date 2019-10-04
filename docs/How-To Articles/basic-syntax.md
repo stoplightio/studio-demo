@@ -1,5 +1,5 @@
 ---
-tags: [01. Using Markdown]
+tags: [How-To]
 ---
 
 # Markdown Basics

@@ -1,6 +1,6 @@
 ---
 title: UI Overview
-tags: [00. Welcome]
+tags: [UX]
 ---
 
 # UI Overview

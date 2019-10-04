@@ -6,7 +6,7 @@ x-tags:
 properties:
   code:
     type: string
-    description: A code.
+    description: the code ll
   message:
     type: string
 required:

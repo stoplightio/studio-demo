@@ -1,8 +1,8 @@
 ---
-tags: [00. Welcome]
+tags: [Introduction]
 ---
 
-# Introduction
+# The Introduction
 
 Studio is our next generation app for API design, modeling, and technical writing. 
 

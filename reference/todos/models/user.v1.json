@@ -17,6 +17,7 @@
     "age"
   ],
   "x-tags": [
+    "Endpoints",
     "Todos"
   ]
 }
