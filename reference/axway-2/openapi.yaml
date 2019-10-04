@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: axway
   version: '1.0'
+  contact:
+    name: a
+  description: a
 servers:
   - url: 'http://localhost:3000'
 paths:
@@ -15,6 +18,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../common/models/mymodel.v1.yaml
+                $ref: ../todos/models/user.v1.json
+      description: a
 components:
   schemas: {}

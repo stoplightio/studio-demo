@@ -1,12 +1,12 @@
 title: mymodel
 type: object
+description: ff
 properties:
-  id:
+  kkk:
     type: string
-  a:
+  hhhhh:
     type: string
   bq:
     type:
       - string
       - number
-description: ff
