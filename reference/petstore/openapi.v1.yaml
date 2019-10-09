@@ -58,6 +58,11 @@ paths:
         - Endpoints
         - Petstore
       description: ''
+    patch:
+      summary: ''
+      responses:
+        '200':
+          description: OK
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
@@ -85,6 +90,15 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+    head:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'http://localhost:8080/api/nodes.raw?srn=gh/dgrstl/studio-demo/reference/petstore/openapi.yaml/components/schemas/Pets&mid=1'
 components:
   schemas:
     Pets:

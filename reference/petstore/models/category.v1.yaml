@@ -1,10 +1,8 @@
 title: Category
 type: object
 description: ''
-properties:
-  name:
-    type: string
-required:
-  - name
 x-tags:
   - Models
+properties:
+  '':
+    type: string
