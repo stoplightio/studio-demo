@@ -28,7 +28,7 @@
           "format": "date-time"
         },
         "user": {
-          "$ref": "./user.v1.json"
+          "$ref": "https://sales.stoplight-dev.com/api/nodes.raw?srn=gh/dgrstl/studio-demo-model-common-libraries/reference/common/models/user.yaml"
         }
       },
       "required": [
