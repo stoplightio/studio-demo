@@ -48,6 +48,9 @@
       "get": {
         "operationId": "GET_todo",
         "summary": "Get Todo",
+        "tags": [
+          "Todos"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -72,26 +75,23 @@
             "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
         },
-        "tags": [
-          "Endpoints",
-          "Todos"
-        ],
-        "description": ""
+        "description": "Get todo"
       },
       "put": {
         "operationId": "PUT_todos",
         "summary": "Update Todo",
+        "tags": [
+          "Todos"
+        ],
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "./models/todo-partial.v1.json",
-              "example": {
-                "name": "my todo's new name",
-                "completed": false
-              }
-            }
+              "$ref": "./models/todo-partial.v1.json"
+            },
+            "x-examples": {},
+            "description": ""
           }
         ],
         "responses": {
@@ -110,15 +110,6 @@
                 "updated_at": "2015-08-28T14:14:28.494Z"
               }
             }
-          },
-          "401": {
-            "$ref": "../common/openapi.v1.yaml#/responses/401"
-          },
-          "404": {
-            "$ref": "../common/openapi.v1.yaml#/responses/404"
-          },
-          "500": {
-            "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
         },
         "security": [
@@ -126,15 +117,14 @@
             "apikey": []
           }
         ],
-        "tags": [
-          "Endpoints",
-          "Todos"
-        ],
-        "description": ""
+        "description": "Update Todo"
       },
       "delete": {
         "operationId": "DELETE_todo",
         "summary": "Delete Todo",
+        "tags": [
+          "Todos"
+        ],
         "responses": {
           "204": {
             "description": ""
@@ -154,26 +144,22 @@
             "apikey": []
           }
         ],
-        "tags": [
-          "Endpoints",
-          "Todos"
-        ]
+        "description": "Delete Todo"
       }
     },
     "/todos": {
       "post": {
         "operationId": "POST_todos",
         "summary": "Create Todo",
+        "tags": [
+          "Todos"
+        ],
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "./models/todo-partial.v1.json",
-              "example": {
-                "name": "my todo's name",
-                "completed": false
-              }
+              "$ref": "./models/todo-partial.v1.json"
             }
           }
         ],
@@ -206,15 +192,14 @@
             "apikey": []
           }
         ],
-        "description": "This creates a Todo object.\n\nTesting `inline code`.",
-        "tags": [
-          "Endpoints",
-          "Todos"
-        ]
+        "description": "This creates a Todo object.\n\nTesting `inline code`."
       },
       "get": {
         "operationId": "GET_todos",
         "summary": "List Todos",
+        "tags": [
+          "Todos"
+        ],
         "parameters": [
           {
             "$ref": "../common/openapi.v1.yaml#/parameters/limit"
@@ -228,7 +213,6 @@
             "description": "",
             "schema": {
               "type": "array",
-              "description": "",
               "items": {
                 "$ref": "./models/todo-full.v1.json"
               }
@@ -257,10 +241,7 @@
             "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
         },
-        "tags": [
-          "Endpoints",
-          "Todos"
-        ]
+        "description": "List Todos"
       }
     }
   }
