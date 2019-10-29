@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
-      description: List all pets
+      description: foo
     post:
       summary: Create a pet
       operationId: createPets
