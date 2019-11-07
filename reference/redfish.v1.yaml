@@ -71,6 +71,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
+      description: .
   /redfish/v1/AccountService:
     get:
       responses:
