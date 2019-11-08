@@ -1,0 +1,3942 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Language Cloud Public API",
+    "version": "1.0",
+    "description": "The Language Cloud public API.\n<!-- comment here -->",
+    "contact": {
+      "name": "SDL"
+    }
+  },
+  "paths": {
+    "/projects": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Project"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            },
+            "examples": {}
+          }
+        },
+        "summary": "Get projects",
+        "description": "Get a list of projects.\n<!-- without quote details in response (planned)-->",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "string",
+            "description": "Only return projects with the given status.",
+            "enum": [
+              "created",
+              "inProgress",
+              "completed",
+              "cancelled"
+            ]
+          }
+        ],
+        "operationId": "getProjects"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        },
+        "summary": "Create project",
+        "description": "Creates a project based on a project template.\n<!-- without quote details in response (planned)-->",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ProjectCreate"
+            }
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "createProject"
+      }
+    },
+    "/projects/{projectId}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {}
+          }
+        },
+        "summary": "Delete project",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "description": "Delete a project.",
+        "operationId": "deleteProject"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Get project",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "description": "Get a project by id.\n<!-- without quote details in response (planned)-->",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getProject"
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        },
+        "summary": "Update project",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "description": "Updates certain basic details of a project. \n<!-- without quote details in response (planned)-->",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ProjectUpdate"
+            }
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "updateProject"
+      }
+    },
+    "/projects/{projectId}/source-files": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SourceFile"
+            }
+          }
+        },
+        "summary": "Add project source file",
+        "description": "Add new source file to a project.\n\nIncludes:\n- file contents\n\n<!-- without file contents at the moment (planned), so no binary data is uploaded at the moment to FMS, also some fields like originatingTask is not expanded-->",
+        "tags": [
+          "_ChangesRequested",
+          "Projects",
+          "_Implemented"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SourceFileCreate"
+            }
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "addProjectSourceFile"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SourceFile"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get project source files",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "description": "Get a list of project source files.\n\n<!-- without file contents at the moment (planned), so no binary data is uploaded at the moment to FMS, also some fields like originatingTask is not expanded-->",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getProjectSourceFiles"
+      }
+    },
+    "/projects/{projectId}/source-files/{sourceFileId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SourceFile"
+            }
+          }
+        },
+        "summary": "Get project source file",
+        "tags": [
+          "Projects",
+          "_Implemented"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "description": "Get a project source file by id.\n<!-- without file contents at the moment(planned), so no binary data is uploaded at the moment to FMS, also some fields like originatingTask is not expanded-->",
+        "operationId": "getProjectSourceFile"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Delete project source file",
+        "tags": [
+          "_Reviewed",
+          "Projects",
+          "NotAvailable"
+        ],
+        "description": "Deletes a source file from the project.",
+        "operationId": "deleteProjectSourceFile"
+      }
+    },
+    "/projects/{projectId}/target-files": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/TargetFile"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get project target files",
+        "tags": [
+          "_Planned",
+          "Projects"
+        ],
+        "description": "Get a list of project target files.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "in": "query",
+            "name": "targetFileIds",
+            "type": "string",
+            "description": "Comma-separated list of target file ids to retrieve."
+          },
+          {
+            "in": "query",
+            "name": "sourceFileIds",
+            "type": "string",
+            "description": "Comma-separated list of source file ids for which to retrieve all the target files."
+          }
+        ],
+        "operationId": "getProjectTargetFiles"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/target-files/{targetFileId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TargetFile"
+            }
+          }
+        },
+        "summary": "Get project target file",
+        "tags": [
+          "_Planned",
+          "Projects",
+          "NotAvailable"
+        ],
+        "description": "Get a project target file by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getProjectTargetFile"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Task"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get tasks",
+        "tags": [
+          "_Planned",
+          "Projects"
+        ],
+        "description": "Get a list of tasks ",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "string",
+            "description": "Filter tasks by task status.",
+            "enum": [
+              "created",
+              "inProgress",
+              "completed",
+              "failed"
+            ]
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "in": "query",
+            "name": "typeId",
+            "type": "string",
+            "description": "Filter by task type id."
+          },
+          {
+            "in": "query",
+            "name": "projectId",
+            "type": "string",
+            "description": "Get only tasks for the specified project."
+          }
+        ],
+        "operationId": "getTasks"
+      }
+    },
+    "/tasks/assignedtome": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Task"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get tasks assigned to me",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "description": "Get a list of tasks that are assigned to me.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "string",
+            "description": "Filter tasks by task status.",
+            "enum": [
+              "created",
+              "inProgress",
+              "completed",
+              "failed"
+            ]
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "in": "query",
+            "name": "typeId",
+            "type": "string",
+            "description": "Filter by task type id."
+          },
+          {
+            "in": "query",
+            "name": "projectId",
+            "type": "string",
+            "description": "Get only tasks for the specified project."
+          }
+        ],
+        "operationId": "getTasksAssignedToMe"
+      }
+    },
+    "/workflow-templates": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/WorkflowTemplate"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get workflow templates",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a list of workflow templates",
+        "operationId": "getWorkflowTemplates",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "in": "query",
+            "name": "",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/task-types": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/TaskType"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get task types",
+        "tags": [
+          "_Reviewed",
+          "Configuration"
+        ],
+        "description": "Get a  list of task types",
+        "operationId": "getTaskTypes"
+      }
+    },
+    "/workflows": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Workflow"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get workflows",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "operationId": "getWorkflows",
+        "description": "Get a list of workflows.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          }
+        ]
+      }
+    },
+    "/projects{projectId}/complete": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Complete project",
+        "tags": [
+          "_Planned",
+          "Projects"
+        ],
+        "description": "Complete a project",
+        "operationId": "completeProject"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/start": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Start project",
+        "tags": [
+          "_Planned",
+          "Projects"
+        ],
+        "description": "Start the workflow of a project",
+        "operationId": "startProject"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/workflow/configuration": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProjectWorkflowConfiguration"
+            }
+          }
+        },
+        "summary": "Get project workflow configuration",
+        "tags": [
+          "_Todo",
+          "Projects",
+          "NotAvailable",
+          "_Planned"
+        ],
+        "description": "Get the workflow configuration of a project",
+        "operationId": "getProjectWorkflowConfiguration"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Update project workflow configuration",
+        "tags": [
+          "_Todo",
+          "Projects",
+          "NotAvailable",
+          "_Planned"
+        ],
+        "description": "Update the workflow configuration of a project.",
+        "operationId": "updateProjectWorkflowConfiguration"
+      }
+    },
+    "/projects/{projectId}/tasks": {
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "summary": "Get task",
+        "tags": [
+          "_Planned",
+          "Projects"
+        ],
+        "description": "Get a task by id",
+        "operationId": "getTask"
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/project-templates": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ProjectTemplate"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get project templates",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a list of project templates.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          }
+        ],
+        "operationId": "getProjectTemplates"
+      }
+    },
+    "/project-templates/{projectTemplateId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProjectTemplate"
+            }
+          }
+        },
+        "summary": "Get project template",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a project template by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getProjectTemplate"
+      },
+      "parameters": [
+        {
+          "name": "projectTemplateId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/file-processing-configurations": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/FileProcessingConfiguration"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get file processing configurations",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a list of file processing configurations.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          }
+        ],
+        "operationId": "getFileProcessingConfigurations"
+      }
+    },
+    "/file-processing-configurations/{fileProcessingConfigurationId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileProcessingConfiguration"
+            }
+          }
+        },
+        "summary": "Get file processing configuration",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a file processing configuration by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getFileProcessingConfiguration"
+      },
+      "parameters": [
+        {
+          "name": "fileProcessingConfigurationId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/pricing-models": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/PricingModel"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get pricing models",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a list of pricing models.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          }
+        ],
+        "operationId": "getPricingModels"
+      }
+    },
+    "/pricing-models/{pricingModelId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PricingModel"
+            }
+          }
+        },
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get pricing model by id.",
+        "summary": "Get pricing model",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "operationId": "getPricingModel"
+      },
+      "parameters": [
+        {
+          "name": "pricingModelId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/translation-engines": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/TranslationEngine"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get translation engines",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a list of translation engines.",
+        "operationId": "getTranslationEngines",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          }
+        ]
+      }
+    },
+    "/termbases": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Termbase"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get termbases",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "description": "Get a list of termbases.",
+        "operationId": "getTermbases"
+      }
+    },
+    "/languages": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Language"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "summary": "Get languages",
+        "operationId": "getLanguages",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "type": "string",
+            "description": "Specifies which type of languages to return: all languages, only region-specific languages or only region-neutral languages.",
+            "enum": [
+              "all",
+              "specific",
+              "neutral"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "languageCodes",
+            "type": "string",
+            "description": "A comma-separated list of language codes to retrieve."
+          }
+        ],
+        "description": "Get supported languages."
+      }
+    },
+    "/customers": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Customer"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "_Todo",
+          "Customers and Vendors"
+        ],
+        "summary": "Get customers",
+        "operationId": "getCustomers",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          }
+        ],
+        "description": "Get a list of customers."
+      }
+    },
+    "/vendors": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Vendor"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get vendors",
+        "tags": [
+          "_Todo",
+          "Customers and Vendors"
+        ],
+        "description": "Get a list of vendors.",
+        "operationId": "getVendors"
+      }
+    },
+    "/vendor-order-templates": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/VendorOrderTemplate"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get vendor order templates",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "description": "Get a list of vendor order templates.",
+        "operationId": "getVendorOrderTemplates"
+      }
+    },
+    "/translation-memories": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/TranslationMemory"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "summary": "Get translation memories",
+        "description": "Get a list of translation memories.",
+        "operationId": "getTranslationMemories"
+      }
+    },
+    "/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Account"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get accounts",
+        "tags": [
+          "_Todo",
+          "User Management",
+          "_Implemented"
+        ],
+        "operationId": "getAccounts",
+        "description": "Get all the accounts where the user has an account membership.\n\n",
+        "parameters": []
+      }
+    },
+    "/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get users",
+        "tags": [
+          "_Reviewed",
+          "User Management"
+        ],
+        "description": "Get a list of users.",
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          },
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          },
+          {
+            "$ref": "#/parameters/response-sort"
+          }
+        ]
+      }
+    },
+    "/users/invite": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "description": "Invite a user to this account.",
+        "summary": "Invite user to account",
+        "tags": [
+          "_Todo",
+          "User Management"
+        ],
+        "operationId": "inviteUser"
+      }
+    },
+    "/groups": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get groups",
+        "tags": [
+          "_Todo",
+          "User Management"
+        ],
+        "operationId": "getGroups",
+        "description": "Get a list of groups.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/filter-location"
+          }
+        ]
+      }
+    },
+    "/folders": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns a flat list of folders meeting the search criteria.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Folder"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get folders",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "operationId": "getFolders",
+        "description": "Get a list of folders.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "Rsetrict search to folders having the specified name."
+          },
+          {
+            "in": "query",
+            "name": "ancestor",
+            "type": "string",
+            "description": "Restrict search to folders having the specified ancestor (folder id). This is similar to ‘location’, except that this parameter will search folders at all levels beneath the specified folder."
+          },
+          {
+            "$ref": "#/parameters/filter-location"
+          }
+        ]
+      }
+    },
+    "/folders/{folderId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Folder"
+            }
+          }
+        },
+        "summary": "Get folder",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "operationId": "getFolder",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "description": "Get folder by id."
+      },
+      "parameters": [
+        {
+          "name": "folderId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/accounts/{accountId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        },
+        "summary": "Get account",
+        "operationId": "getAccount",
+        "tags": [
+          "_Todo",
+          "User Management"
+        ],
+        "description": "Get an account by id. The user needs to have an account membership in the requested account.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          },
+          {
+            "$ref": "#/parameters/pagination-top"
+          },
+          {
+            "$ref": "#/parameters/pagination-skip"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "accountId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/customers/{customerId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        },
+        "summary": "Get customer",
+        "operationId": "getCustomer",
+        "tags": [
+          "_Todo",
+          "Customers and Vendors"
+        ],
+        "description": "Get a customer by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "customerId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/groups/{groupId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        },
+        "summary": "Get group",
+        "description": "Get a group by id.",
+        "operationId": "getGroup",
+        "tags": [
+          "_Todo",
+          "User Management"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "groupId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/task-types/{taskTypeId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TaskType"
+            }
+          }
+        },
+        "summary": "Get task type",
+        "operationId": "getTaskType",
+        "tags": [
+          "_Reviewed",
+          "Configuration"
+        ],
+        "description": "Get a task type by id."
+      },
+      "parameters": [
+        {
+          "name": "taskTypeId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/termbases/{termbaseId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Termbase"
+            }
+          }
+        },
+        "summary": "Get termbase",
+        "operationId": "getTermbase",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "description": "Get termbase by id."
+      },
+      "parameters": [
+        {
+          "name": "termbaseId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/translation-engines/{translationEngineId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TranslationEngine"
+            }
+          }
+        },
+        "summary": "Get translation engine",
+        "operationId": "getTranslationEngine",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a translation engine by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "translationEngineId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/translation-memories/{translationMemoryId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TranslationMemory"
+            }
+          }
+        },
+        "summary": "Get translation memory",
+        "operationId": "getTranslationMemory",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ],
+        "description": "Get a translation memory by id."
+      },
+      "parameters": [
+        {
+          "name": "translationMemoryId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/users/{userId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "summary": "Get user",
+        "operationId": "getUser",
+        "tags": [
+          "_Reviewed",
+          "User Management"
+        ],
+        "description": "Get user by id."
+      },
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/vendors/{vendorId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Vendor"
+            }
+          }
+        },
+        "summary": "Get vendor",
+        "operationId": "getVendor",
+        "tags": [
+          "_Todo",
+          "Customers and Vendors"
+        ],
+        "description": "Get a vendor by id."
+      },
+      "parameters": [
+        {
+          "name": "vendorId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/vendor-order-templates/{vendorOrderTemplateId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VendorOrderTemplate"
+            }
+          }
+        },
+        "summary": "Get vendor order template",
+        "operationId": "getVendorOrderTemplate",
+        "tags": [
+          "_Todo",
+          "Configuration"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "vendorOrderTemplateId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/workflow-templates/{workflowTemplateId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WorkflowTemplate"
+            }
+          }
+        },
+        "summary": "Get workflow template",
+        "operationId": "getWorkflowTemplate",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a workflow template by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "workflowTemplateId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/workflow/{workflowId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Workflow"
+            }
+          }
+        },
+        "summary": "Get workflow",
+        "operationId": "getWorkflow",
+        "tags": [
+          "_Draft",
+          "Configuration"
+        ],
+        "description": "Get a workflow by id.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "workflowId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/vendor-orders": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/VendorOrder"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get project vendor orders",
+        "tags": [
+          "_Todo",
+          "Projects",
+          "NotAvailable"
+        ],
+        "description": "Get a list of vendor orders in a project.",
+        "operationId": "getProjectVendorOrders"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/vendor-orders/{vendorOrderId}": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Update vendor order",
+        "tags": [
+          "_Todo",
+          "Projects",
+          "NotAvailable"
+        ],
+        "operationId": "updateVendorOrder",
+        "description": "Updates a vendor order"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "vendorOrderId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Get vendor order",
+        "tags": [
+          "_Todo",
+          "Projects",
+          "NotAvailable"
+        ],
+        "operationId": "getVendorOrder",
+        "description": "Gets a vendor order by id"
+      }
+    },
+    "/tasks/{taskId}/reassign": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {}
+          }
+        },
+        "summary": "Re-assign task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "assignTask",
+        "description": "Re-assign task to another set of assignees.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "assignees": {
+                  "$ref": "#/definitions/TaskAssigneeUpdate"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}/accept": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {}
+          }
+        },
+        "summary": "Accept task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "acceptTask",
+        "description": "Accepts a task that is assigned to me.\n\nThe task has to be assigned to me and not accepted by anyone else yet (owner is not set).",
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}/reclaim": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {}
+          }
+        },
+        "summary": "Reclaim task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "reclaimTask",
+        "description": "For tasks currently assigned to and accepted by someone else, assigns the task to me and accepts it.",
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}/reject": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Reject task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "rejectTask",
+        "description": "Rejects a task that is assigned to me.",
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}/release": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {}
+          }
+        },
+        "summary": "Release task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "releaseTask",
+        "description": "Releases a task where I am the owner so that someone else can accept it.",
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/tasks/{taskId}/complete": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "assignees": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Complete task",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "completeTask",
+        "description": "Completes a task with a given outcome.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "outcome": {
+                  "type": "string",
+                  "description": "The outcome of the task. \n\nThis must be one of the values listed in TaskType.outcomes. "
+                },
+                "comment": {
+                  "type": "string",
+                  "description": "An optional comment providing additional information about the task or its outcome."
+                }
+              },
+              "required": [
+                "outcome"
+              ]
+            }
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "taskId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/webhooks": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Webhook"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get webhooks",
+        "tags": [
+          "_Todo",
+          "Webhooks"
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Create webhook",
+        "description": "Todo: define all event types. Maybe initial focus on projects only:\n* project created/updated\n* project source file added/deleted\n* project target file added\n* project file version added/updated\n* project task created/updated\n* project vendor order created/updated/deleted\n* ...",
+        "tags": [
+          "_Todo",
+          "Webhooks"
+        ]
+      }
+    },
+    "/webhooks/{webhookId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Get webhook",
+        "tags": [
+          "_Todo",
+          "Webhooks"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "webhookId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Update webhook",
+        "tags": [
+          "_Todo",
+          "Webhooks"
+        ]
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "summary": "Delete webhook",
+        "tags": [
+          "_Todo",
+          "Webhooks"
+        ]
+      }
+    },
+    "/projects/{projectId}/source-files/{sourceFileId}/versions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/FileVersion"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get source file versions",
+        "description": "Get a list of all file versions of a source file",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "getSourceFileVersions"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/target-files/{targetFileId}/versions": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/FileVersion"
+                  }
+                },
+                "itemCount": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get target file versions",
+        "description": "Get a list of all file versions of a target file",
+        "parameters": [
+          {
+            "$ref": "#/parameters/response-fields"
+          }
+        ],
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "getTargetFileVersions"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/source-files/{sourceFileId}/versions/{fileVersionId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileVersion"
+            }
+          }
+        },
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "summary": "Get source file version",
+        "operationId": "getSourceFileVersion"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fileVersionId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/source-files/{sourceFileId}/versions/{fileVersionId}/exports": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileExport"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fileFormat",
+            "type": "string",
+            "description": "Specifies the file format in which the file version should be exported.",
+            "enum": [
+              "sdlxliff",
+              "native"
+            ],
+            "required": true
+          }
+        ],
+        "description": "Starts exporting the file version to a file. \nFiles can be exported to sdlxliff or in their native file format.\nThe following restrictions apply:\n* Only bilingual file versions can be exported to sdllxiff.\n* Source file bilingual versions cannot be exported to the native format.\n",
+        "summary": "Export source file version",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "exportSourceFileVersion"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fileVersionId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/source-files/{sourceFileId}/versions/{fileVersionId}/exports/{exportId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileExport"
+            }
+          }
+        },
+        "summary": "Get source file version export",
+        "description": "Gets a file export that was previously scheduled.",
+        "operationId": "getSourceFileVersionExport",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "sourceFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fileVersionId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "exportId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/target-files/{targetFileId}/versions/{fileVersionId}/exports": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileExport"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fileFormat",
+            "type": "string",
+            "description": "Specifies the file format in which the file version should be exported.",
+            "enum": [
+              "sdlxliff",
+              "native"
+            ],
+            "required": true
+          }
+        ],
+        "description": "Starts exporting the file version to a file. \nFiles can be exported to sdlxliff or in their native file format.\nThe following restrictions apply:\n* Only bilingual file versions can be exported to sdllxiff.\n* Source file bilingual versions cannot be exported to the native format.\n",
+        "summary": "Export target file version",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ],
+        "operationId": "exportTargetFileVersion"
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fileVersionId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/projects/{projectId}/target-files/{targetFileId}/versions/{fileVersionId}/exports/{exportId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FileExport"
+            }
+          }
+        },
+        "summary": "Get target file version export",
+        "description": "Gets a file export that was previously scheduled.",
+        "operationId": "getTargetFileVersionExport",
+        "tags": [
+          "_Reviewed",
+          "Projects"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "targetFileId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fileVersionId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "exportId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  },
+  "host": "ge4tgnrthj3gk4ttnfxw4lzrfyydu3lpmnvwk4roobzgs43nfz4w23a.prism.stoplight.io",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {},
+  "tags": [
+    {
+      "name": "_Todo"
+    },
+    {
+      "name": "_Draft"
+    },
+    {
+      "name": "_Reviewed"
+    },
+    {
+      "name": "_Planned"
+    },
+    {
+      "name": "_Implemented"
+    },
+    {
+      "name": "_ChangesRequested"
+    },
+    {
+      "name": "Projects"
+    },
+    {
+      "name": "Configuration"
+    },
+    {
+      "name": "Customers and Vendors"
+    },
+    {
+      "name": "User Management"
+    },
+    {
+      "name": "Webhooks"
+    },
+    {
+      "name": "NotAvailable"
+    }
+  ],
+  "definitions": {
+    "ProjectCreate": {
+      "type": "object",
+      "description": "Model used to to create new projects.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name for the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the project."
+        },
+        "dueBy": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time by which the project is due to be completed."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Internal notes for the project."
+        },
+        "projectTemplateId": {
+          "type": "string",
+          "description": "The id of the project template from which the configuration for this project should be copied."
+        },
+        "languageDirections": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "description": "The language directions for the project. This has to be a subset of the language directions supported by the specified project template.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceLanguageCode": {
+                "type": "string"
+              },
+              "targetLanguageCode": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "location": {
+          "type": "string",
+          "description": "The if of the folder where this project should be created."
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the project."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the project."
+        },
+        "dueBy": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time by which the project is due to be completed."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Internal notes associated with the project."
+        },
+        "languageDirections": {
+          "type": "array",
+          "description": "The list of language directions in this project. They all share the swme source language.",
+          "items": {
+            "$ref": "#/definitions/ProjectLanguageDirection"
+          }
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        },
+        "projectTemplate": {
+          "$ref": "#/definitions/ProjectTemplate"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "created",
+            "inProgress",
+            "completed",
+            "cancelled"
+          ],
+          "description": "The status of the project."
+        },
+        "customer": {
+          "$ref": "#/definitions/Customer"
+        },
+        "ragStatus": {
+          "type": "string",
+          "enum": [
+            "red",
+            "amber",
+            "green"
+          ],
+          "description": "The RAG status: red, amber or green."
+        },
+        "translationEngine": {
+          "$ref": "#/definitions/TranslationEngine"
+        },
+        "fileProcessingConfiguration": {
+          "$ref": "#/definitions/FileProcessingConfiguration"
+        },
+        "pricingModel": {
+          "$ref": "#/definitions/PricingModel"
+        },
+        "workflow": {
+          "$ref": "#/definitions/Workflow"
+        },
+        "quote": {
+          "$ref": "#/definitions/Quote"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "languageDirections",
+        "location"
+      ]
+    },
+    "ProjectTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the project template."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the project template."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the project template."
+        },
+        "languageDirections": {
+          "type": "array",
+          "description": "The list of language directions supported by this project template.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceLanguage": {
+                "$ref": "#/definitions/Language"
+              },
+              "targetLanguage": {
+                "$ref": "#/definitions/Language"
+              }
+            }
+          }
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        },
+        "translationEngine": {
+          "$ref": "#/definitions/TranslationEngine"
+        },
+        "fileProcessingConfiguration": {
+          "$ref": "#/definitions/FileProcessingConfiguration"
+        },
+        "pricingModel": {
+          "$ref": "#/definitions/PricingModel"
+        },
+        "workflow": {
+          "$ref": "#/definitions/Workflow"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "description": "Represents a project template that can be used to create projects quickly without specifying all configuration options explicitly.\n\n<!-- \n* Project template settings are not included for now\n-->"
+    },
+    "TranslationEngine": {
+      "type": "object",
+      "description": "A translation engine, which combines machine translation, translation memories and termbases\n\n<!-- TBD how we want to represent this -->",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "PricingModel": {
+      "type": "object",
+      "description": "Represents a pricing model.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "languageDirectionPricing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LanguageDirectionPricing"
+          }
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "fuzzyMatchCategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FuzzyMatchCategory"
+          }
+        },
+        "additionalCosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalCost"
+          }
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "AdditionalCost": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Volume",
+            "PerTargetLanguage",
+            "PerFile",
+            "Hourly",
+            "Percentage"
+          ]
+        },
+        "index": {
+          "type": "integer"
+        },
+        "costPerUnit": {
+          "type": "number"
+        },
+        "unitCount": {
+          "type": "integer"
+        },
+        "volumeUnitType": {
+          "type": "string",
+          "enum": [
+            "Words",
+            "Characters"
+          ]
+        }
+      }
+    },
+    "FuzzyMatchCategory": {
+      "type": "object",
+      "properties": {
+        "minimumMatchValue": {
+          "type": "integer"
+        },
+        "maximumMatchValue": {
+          "type": "integer"
+        }
+      }
+    },
+    "Discount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "valueType": {
+          "type": "string"
+        }
+      }
+    },
+    "LanguageDirectionPricing": {
+      "type": "object",
+      "properties": {
+        "contextMatch": {
+          "type": "number"
+        },
+        "exactMatch": {
+          "type": "number"
+        },
+        "new": {
+          "type": "number"
+        },
+        "perfectMatch": {
+          "type": "number"
+        },
+        "postEdit": {
+          "type": "number"
+        },
+        "repetition": {
+          "type": "number"
+        },
+        "sourceLanguage": {
+          "type": "string"
+        },
+        "targetLanguage": {
+          "type": "string"
+        },
+        "pricingUnit": {
+          "type": "string"
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "fuzzyMatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FuzzyMatchPricing"
+          }
+        },
+        "additionalCosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalCost"
+          }
+        }
+      }
+    },
+    "FuzzyMatchPricing": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "number"
+        },
+        "category": {
+          "$ref": "#/definitions/FuzzyMatchCategory"
+        }
+      }
+    },
+    "FileProcessingConfiguration": {
+      "type": "object",
+      "description": "A file type configuration, controlling how files of certain types are procssed within a project.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique id."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description"
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        },
+        "fileTypes": {
+          "$ref": "#/definitions/FileType"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Workflow": {
+      "type": "object",
+      "description": "Represents a project workflow.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the workflow."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description."
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        },
+        "template": {
+          "$ref": "#/definitions/WorkflowTemplate"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Customer": {
+      "type": "object",
+      "description": "Represents a customer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the customer"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the customer"
+        },
+        "ragStatus": {
+          "type": "string",
+          "enum": [
+            "red",
+            "amber",
+            "green"
+          ],
+          "description": "The status of the customer: red, amber or green."
+        },
+        "keyContact": {
+          "$ref": "#/definitions/User"
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Account": {
+      "type": "object",
+      "title": "Account",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "membership": {
+          "type": "string",
+          "enum": [
+            "member",
+            "collaborator"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "membership"
+      ]
+    },
+    "User": {
+      "type": "object",
+      "description": "A user in an account.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anonymized": {
+          "type": "boolean"
+        },
+        "anonymizedUserName": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Group"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "anonymized",
+        "anonymizedUserName",
+        "email",
+        "firstName",
+        "lastName"
+      ]
+    },
+    "Folder": {
+      "type": "object",
+      "title": "Folder",
+      "description": "A folder in the hierarchy.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Folder id."
+        },
+        "location": {
+          "type": "string",
+          "description": "Parent folder id. Will not be set if the parent folder is not visible to the current security context. Use the 'hasParent' flag to check if the current folder is under a parent folder (visible or not)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Folder name."
+        },
+        "path": {
+          "type": "array",
+          "description": "List of ancestor folders in the hierarchy. The first item in the list is the parent folder. Items are listed up to the last ancestor which is visible to the current security context.\n\nFollowing item fields are populated: id, name, location, hasParent.\n\nThis field is optional and may only be populated in certain operation responses.\n",
+          "items": {
+            "$ref": "#/definitions/Folder"
+          }
+        },
+        "hasParent": {
+          "type": "boolean",
+          "description": "Returns if this folder has a parent. Will be 'false' for the root account folder. Will be 'true' if this item has a parent (visible or not to the current security context)."
+        },
+        "properties": {
+          "type": "array",
+          "description": "Collection of arbitrary key-value pairs used for tagging folders with custom information. E.g., folders containing resources for a customer could have a customer reference property.\nPredefined properties:\n* *folder_type*: *root*, *customers*, *customer*, *vendors*, *vendor* - If this folder is a root, customers parent, customer, vendors parent, or vendor folder\n* *reference_id*: *string* - the id of the customer or vendor entity, if *folder_type* (see above) is *customer* or *vendor*",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "description": "Property key."
+              },
+              "value": {
+                "type": "string",
+                "description": "Property value."
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Group": {
+      "type": "object",
+      "description": "A group of users.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Group id."
+        },
+        "name": {
+          "type": "string",
+          "description": "Group name."
+        },
+        "description": {
+          "type": "string",
+          "description": "Group description."
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        }
+      }
+    },
+    "LanguageProcessingRules": {
+      "type": "object",
+      "properties": {}
+    },
+    "SourceFile": {
+      "type": "object",
+      "description": "Represents a source file in a project.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the source file."
+        },
+        "name": {
+          "type": "string",
+          "description": "The filename of the source file."
+        },
+        "path": {
+          "type": "string",
+          "description": "The relative path of the file within the the project, in the form \"/segment1/segment2/...\". Files is the root of the project have path \"/\"."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the source file: unknown, translatable or reference.",
+          "enum": [
+            "translatable",
+            "reference",
+            "unknown"
+          ]
+        },
+        "initialSize": {
+          "type": "integer",
+          "description": "The file size in bytes of the originally uploaded file.",
+          "minimum": 0
+        },
+        "fileType": {
+          "$ref": "#/definitions/FileType"
+        },
+        "supportedFileTypes": {
+          "type": "array",
+          "description": "The list of file types that support processing this source file.",
+          "items": {
+            "$ref": "#/definitions/FileType"
+          }
+        },
+        "latestVersion": {
+          "$ref": "#/definitions/FileVersion"
+        },
+        "targetFiles": {
+          "type": "array",
+          "description": "The target files relaytes to the source files. ",
+          "items": {
+            "$ref": "#/definitions/TargetFile"
+          }
+        },
+        "activeTasks": {
+          "type": "array",
+          "description": "Contains the currently active tasks that this file is an input file for (see Task.inputFiles). Active tasks are considered tasks with a status of created or inProgress.",
+          "items": {
+            "$ref": "#/definitions/Task"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "path",
+        "role",
+        "initialSize",
+        "latestVersion",
+        "fileType"
+      ]
+    },
+    "TargetFile": {
+      "type": "object",
+      "description": "Represents a target file in a project, i.e. the result of translating a source file into one of the project's target languages.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the target file."
+        },
+        "languageDirection": {
+          "$ref": "#/definitions/ProjectLanguageDirection"
+        },
+        "latestVersion": {
+          "$ref": "#/definitions/FileVersion"
+        },
+        "sourceFile": {
+          "$ref": "#/definitions/SourceFile"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "inProgress",
+            "finished"
+          ],
+          "description": "Whether this file is still being processsed by the workflow (inProgress), or whether it has been fully processed (finished).\n\nA target file is automatically marked as finished by the workflow engine once no more tasks need to be performed on it."
+        },
+        "activeTasks": {
+          "type": "array",
+          "description": "Contains the currently active tasks that this file is an input file for (see Task.inputFiles). Active tasks are considered tasks with a status of created or inProgress.",
+          "items": {
+            "$ref": "#/definitions/Task"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "languageDirection",
+        "latestVersion"
+      ]
+    },
+    "Task": {
+      "type": "object",
+      "description": "Represents an automatic or manual task in a project.\n\n<!-- \n* Review task status values (also updated in status query parameters\n* Task outcome: should be related to outcomes specifically defined in the task type?\n* Task status history?\n* Currently no reference to workflow task type\n-->",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the task."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the task.",
+          "enum": [
+            "created",
+            "inProgress",
+            "completed",
+            "failed",
+            "skipped"
+          ]
+        },
+        "type": {
+          "$ref": "#/definitions/TaskType"
+        },
+        "inputObjectType": {
+          "type": "string",
+          "enum": [
+            "sourceFile",
+            "targetFile",
+            "languageDirection",
+            "project",
+            "vendorOrder"
+          ],
+          "description": "The type of the input object for this task."
+        },
+        "inputObject": {
+          "description": "The id of the input object of this task.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/SourceFile"
+            },
+            {
+              "$ref": "#/definitions/TargetFile"
+            },
+            {
+              "$ref": "#/definitions/ProjectLanguageDirection"
+            },
+            {
+              "$ref": "#/definitions/Project"
+            },
+            {
+              "$ref": "#/definitions/VendorOrder"
+            }
+          ]
+        },
+        "inputFiles": {
+          "type": "array",
+          "description": "The input files of this task. These depend on the input object of the task:\n* sourceFile: the source file\n* targetFile: the target file\n* languageDirection: all the target files in that language direction\n* project: all the source or target language files in that project\n* vendor order: all the files in the vendor order",
+          "items": {
+            "$ref": "#/definitions/TaskFile"
+          }
+        },
+        "owner": {
+          "$ref": "#/definitions/User"
+        },
+        "assignees": {
+          "type": "array",
+          "description": "The assignees of the task.",
+          "items": {
+            "$ref": "#/definitions/TaskAssignee"
+          }
+        },
+        "dueBy": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time by which this task is due to be completed."
+        },
+        "outcome": {
+          "type": "string",
+          "description": "The outcome of the task.  \n\nThis is only set for tasks that are completed."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the task"
+        },
+        "project": {
+          "$ref": "#/definitions/Project"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "WorkflowTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier for the workflow template."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description."
+        },
+        "location": {
+          "$ref": "#/definitions/Folder"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "TaskType": {
+      "type": "object",
+      "description": "A task type defines the behavior of a task within a project. Automatic tasks are tasks executed by system, while manual tasks are assigned to people to be performed.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique identifier for the task type."
+        },
+        "key": {
+          "type": "string",
+          "description": "A readable identifier for standard task types."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the task type"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the task type"
+        },
+        "automatic": {
+          "type": "boolean",
+          "description": "Whether this is an automatic or a manual task type"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Termbase": {
+      "type": "object",
+      "properties": {}
+    },
+    "Language": {
+      "type": "object",
+      "description": "Represents a language supported by Language Cloud.",
+      "properties": {
+        "languageCode": {
+          "type": "string",
+          "description": "The language code. This serves as a unique identifier for the language and is used in other places to refer to this language."
+        },
+        "englishName": {
+          "type": "string",
+          "description": "The full name of the language, in English."
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "ltr",
+            "rtl"
+          ],
+          "description": "The direction of the language: left-to-right or right-to-left."
+        },
+        "parentLanguageCode": {
+          "type": "string",
+          "description": "For region-specific languages, the language code of the parent language. For region-neutral language, this property is omitted. "
+        },
+        "defaultSpecificLanguageCode": {
+          "type": "string"
+        },
+        "isNeutral": {
+          "type": "string",
+          "description": "Specifies whether this language is region-neutral."
+        }
+      },
+      "required": [
+        "languageCode",
+        "englishName"
+      ],
+      "title": "Language"
+    },
+    "Vendor": {
+      "type": "object",
+      "properties": {}
+    },
+    "TranslationMemory": {
+      "type": "object",
+      "properties": {}
+    },
+    "VendorOrderTemplate": {
+      "type": "object",
+      "properties": {}
+    },
+    "VendorOrder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "quote": {
+          "$ref": "#/definitions/Quote"
+        },
+        "vendorOrderTemplate": {
+          "$ref": "#/definitions/VendorOrderTemplate"
+        }
+      }
+    },
+    "Quote": {
+      "type": "object",
+      "properties": {}
+    },
+    "ProjectWorkflowConfiguration": {
+      "type": "object",
+      "properties": {}
+    },
+    "Webhook": {
+      "type": "object",
+      "properties": {}
+    },
+    "Error": {
+      "type": "object",
+      "description": "A standard error response.",
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "description": "Error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "Error-message, human readable."
+        },
+        "details": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "description": "Optional error details",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "errorCode": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "errorCode",
+        "message"
+      ]
+    },
+    "ProjectUpdate": {
+      "type": "object",
+      "description": "Model used to update certain project details.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the project."
+        },
+        "dueBy": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time by which the project is due to be completed."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Internal notes for the project."
+        }
+      }
+    },
+    "FileType": {
+      "type": "object",
+      "description": "A file type controls how a source file in a project is processed.\n\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique id of the file type."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the file type."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the file type."
+        },
+        "enabled": {
+          "type": "string",
+          "description": "Whether this file type is enabled. \n\nFile types which are not enabled within a file type configuration cannot be associated with source files."
+        },
+        "hidden": {
+          "type": "string",
+          "description": "Whether this file type is hidden."
+        },
+        "extensions": {
+          "type": "array",
+          "description": "An array of file extensions. This can be used to identify whether a certain file can possibly be processed using this file type.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "FileVersion": {
+      "type": "object",
+      "description": "Represents a version of a source or target file.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the file version."
+        },
+        "filename": {
+          "type": "string",
+          "description": "The file name of the file related to this file version. Can differ from the original file name. For bilingual files, these name has the sdlxliff extension."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "native",
+            "bilingual"
+          ],
+          "description": "Specifies whether this file version represents a native file or a bilingual file (sdlxliff)."
+        },
+        "originatingTask": {
+          "$ref": "#/definitions/Task"
+        },
+        "confirmationStatistics": {
+          "type": "string",
+          "description": "The statistics related to the status of segments within the file. Only relevant for bilingual files."
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "originatingTask",
+        "confirmationStatistics",
+        "filename"
+      ]
+    },
+    "ConfimationStatistics": {
+      "type": "object",
+      "properties": {},
+      "title": "ConfimationStatistics"
+    },
+    "ProjectLanguageDirection": {
+      "type": "object",
+      "description": "Represents a language direction in a project.",
+      "required": [
+        "sourceLanguage",
+        "targetLanguage"
+      ],
+      "properties": {
+        "sourceLanguage": {
+          "$ref": "#/definitions/Language"
+        },
+        "targetLanguage": {
+          "$ref": "#/definitions/Language"
+        }
+      }
+    },
+    "SourceFileCreate": {
+      "type": "object",
+      "description": "The model used to add a new source file to a project.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the source file. This should be the file name of the source file (without path)."
+        },
+        "path": {
+          "type": "string",
+          "description": "The relative path of the file within the the project, in the form \"/segment1/segment2/...\". Files is the root of the project have path \"/\"."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the source file: unknown, translatable or reference.\n\nWhen set to unknown or translatbale, the system will attempt to detect the file type(s) that can process the source file.",
+          "enum": [
+            "translatable",
+            "reference",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "role"
+      ]
+    },
+    "TaskFile": {
+      "type": "object",
+      "properties": {},
+      "description": "Represents an input file of a task."
+    },
+    "TaskAssignee": {
+      "type": "object",
+      "description": "Represents a task assignee.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "user",
+            "vendorOrderTemplate",
+            "group"
+          ]
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "vendorOrderTemplate": {
+          "$ref": "#/definitions/VendorOrderTemplate"
+        },
+        "group": {
+          "$ref": "#/definitions/Group"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "TaskAssigneeUpdate": {
+      "type": "object",
+      "description": "Used to reassign a task to a different set of assignees.\n\nThe type specifies which of the three other properties should be set.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "user",
+            "vendorOrderTemplate",
+            "group"
+          ]
+        },
+        "userId": {
+          "type": "string"
+        },
+        "vendorOrderTemplateId": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "AsyncResult": {
+      "type": "object",
+      "description": "Represents the result of an async operation, ioncluding status and potential error information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique id for the async operation."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "inProgress",
+            "completed",
+            "failed"
+          ],
+          "description": "The status of the async operation."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "When status is 'failed', contains the error message explaining what went wrong."
+        }
+      },
+      "required": [
+        "id",
+        "status"
+      ],
+      "title": "AsyncResult"
+    },
+    "FileExport": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AsyncResult"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "downloadUrl": {
+              "type": "string",
+              "description": "The url that can be used to download the exported file when the status is 'completed'."
+            }
+          }
+        }
+      ],
+      "description": "Represents a file export operation.\n",
+      "title": "FileExport"
+    },
+    "UserInvitation": {
+      "type": "object",
+      "description": "An invitation to invite a user into an account.",
+      "properties": {
+        "": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "pagination-top": {
+      "name": "top",
+      "in": "query",
+      "type": "integer",
+      "description": "Number of items to include in the response (for pagination).",
+      "maximum": 100,
+      "minimum": 1
+    },
+    "pagination-skip": {
+      "name": "skip",
+      "in": "query",
+      "type": "integer",
+      "description": "Number of items to skip in the response (for pagination)."
+    },
+    "response-fields": {
+      "in": "query",
+      "type": "string",
+      "name": "fields",
+      "description": "A comma separated list off fields to include in the response.\nEvery value in the list should consist of either a top-level property name (excluding the items envelope for endpoints returning lists) or refer to a property of a top-level property of type object, in the following form: \"toplevelpropertyname.subpropertyname\".  Only one level of nesting is supported.\n\nWhen this query parameter is omitted, default resource representations are returned (exclduing fields marked as optional). The same applies to nested objects when just specifiying the top-level property name, without explicitly listing sub-property names. When specifying the fields query parameter, only the specified fields are returned.\n\nThe id property is always returned."
+    },
+    "filter-location": {
+      "in": "query",
+      "type": "string",
+      "name": "location",
+      "description": "Only return items present in the folder with the specified folder id."
+    },
+    "response-sort": {
+      "name": "sort",
+      "in": "query",
+      "type": "string",
+      "description": "A comma separated list of fields used to sort the resources in the response. Each field can have a unary negative to imply descending sort order."
+    }
+  },
+  "responses": {}
+}

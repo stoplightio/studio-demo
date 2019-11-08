@@ -21,7 +21,12 @@
           "match": "Stoplight"
         }
       },
-      "severity": "error"
-    }
+      "severity": "warn"
+    },
+    "info-description": "info",
+    "info-contact": "info",
+    "oas2-anyOf": "error",
+    "oas2-oneOf": "error",
+    "operation-description": "info"
   }
 }

@@ -148,7 +148,7 @@
         "description": "Delete Todo"
       }
     },
-    "/todos": {
+    "/todos/{foo}": {
       "post": {
         "operationId": "POST_todos",
         "summary": "Create Todo",
@@ -243,7 +243,15 @@
           }
         },
         "description": "List Todos"
-      }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "foo",
+          "in": "path",
+          "required": true
+        }
+      ]
     }
   }
 }
