@@ -2629,6 +2629,13 @@
           "required": true
         }
       ]
+    },
+    "/newpath": {
+      "get": {
+        "summary": "do get",
+        "tags": [],
+        "responses": {}
+      }
     }
   },
   "host": "ge4tgnrthj3gk4ttnfxw4lzrfyydu3lpmnvwk4roobzgs43nfz4w23a.prism.stoplight.io",
