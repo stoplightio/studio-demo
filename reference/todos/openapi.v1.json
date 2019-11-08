@@ -6,7 +6,8 @@
     "description": "This OpenAPI v2 (Swagger) file represents a real API that lives at http://todos.stoplight.io.\n\nIt exposes functionality to manage to-do lists.",
     "contact": {
       "name": "Stoplight",
-      "url": "https://stoplight.io"
+      "url": "https://stoplight.io",
+      "email": "info@stoplight.io"
     },
     "license": {
       "name": "MIT"
