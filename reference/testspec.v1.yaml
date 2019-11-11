@@ -1,0 +1,14 @@
+openapi: 3.0.0
+info:
+  title: testspec
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /foo:
+    get:
+      summary: get foo
+      tags: []
+      responses: {}
+components:
+  schemas: {}
