@@ -1,0 +1,3390 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "IxNConnect Content Service",
+    "description": "The **Content Service** has been powering IxNSight and IxNTouch since 2017. It is designed to be **the** multitenant source of what should appear on a display. For more information on the IxNConnect architecture, please refer to [the docs on Confluence](https://intersection-kb.atlassian.net/wiki/spaces/TECH/pages/650575896/Transit+Architecture).",
+    "contact": {
+      "name": "Tyler Green",
+      "url": "https://ixnconnect.intersection.com/",
+      "email": "tyler.green@intersection.com"
+    },
+    "license": {
+      "name": ""
+    }
+  },
+  "host": "content.ixnconnect-dev.ixnta.net",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {},
+  "paths": {
+    "/ixntouch/display-context/{display_id}": {
+      "get": {
+        "operationId": "GET_display",
+        "parameters": [
+          {
+            "$ref": "#/parameters/display_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The targeting_details section will eventually display data about other verticals (airports, private districts) in addition to transit.",
+            "examples": {
+              "application/json": {
+                "display": {
+                  "active": true,
+                  "address": "10 Husdon Yards",
+                  "aspect_ratio_x": 16,
+                  "aspect_ratio_y": 9,
+                  "display_format": 2,
+                  "display_format_detail": {
+                    "id": 2,
+                    "name": "Test CTA Display Format",
+                    "organization": 1
+                  },
+                  "display_health_detail": null,
+                  "distance_of_interest": "700.00",
+                  "external_id": "19329",
+                  "id": 2,
+                  "installation_date": "2017-12-20",
+                  "interactive": false,
+                  "intercardinal_direction": "North",
+                  "ixn_internal_id": "19329",
+                  "ixn_screen_type": 1,
+                  "ixn_screen_type_detail": {
+                    "id": 1,
+                    "name": "IxNSight"
+                  },
+                  "latitude": "40.712700",
+                  "longitude": "-74.005900",
+                  "model": "??",
+                  "name": "Demo Display 19329",
+                  "object_tag_url": "http://platform:8000/api/v1/displays/2/object-tags/",
+                  "organization": 1,
+                  "organization_details": {
+                    "default_content": 18,
+                    "default_content_detail": {
+                      "active": true,
+                      "content_category": 29,
+                      "content_category_detail": {
+                        "id": 29,
+                        "name": "PSA",
+                        "organization": 1,
+                        "target_percentage": 10
+                      },
+                      "content_type": "psa",
+                      "end_broadcast": "2018-12-31T17:00:00Z",
+                      "id": 18,
+                      "name": "CTA_ Courtesy Campaign_TITAN_Barrier",
+                      "object_tag_url": "http://platform:8000/api/v1/contents/18/object-tags/",
+                      "organization": 1,
+                      "play_weight": 1,
+                      "start_broadcast": "2018-01-01T17:00:00Z",
+                      "status": "active",
+                      "tag_walk_expand_url": "http://platform:8000/api/v1/contents-expand/18/",
+                      "tag_walk_url": "http://platform:8000/api/v1/contents/18/tag-walk/"
+                    },
+                    "default_template": "cta_content",
+                    "default_template_upload": null,
+                    "id": 1,
+                    "logo": "https://s3.amazonaws.com/ixnconnect-dev_platform-assets/1513795977922500.png",
+                    "name": "Chicago Transit Agency",
+                    "organization_type": "TRANSIT",
+                    "short_key": "CTA",
+                    "short_name": "CTA",
+                    "timezone": "America/New_York"
+                  },
+                  "orientation": "LANDSCAPE",
+                  "resolution_x": 1920,
+                  "resolution_y": 1080,
+                  "screen_type": "IXNSIGHT",
+                  "ta_id": "xyz19329",
+                  "tag_walk_expand_url": "http://platform:8000/api/v1/displays-expand/2/",
+                  "tag_walk_url": "http://platform:8000/api/v1/displays/2/tag-walk/",
+                  "targeting_details": {
+                    "routes": [
+                      {
+                        "id": 29,
+                        "label": "Broadway",
+                        "route_code": "36",
+                        "tag_color": "#ccc",
+                        "tag_label": "Broadway",
+                        "tag_text_color": "#000",
+                        "transit_mode": 2,
+                        "transit_mode_type": "BUS"
+                      },
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "stations": [
+                      {
+                        "accessibility": true,
+                        "id": 128,
+                        "label": "Roosevelt",
+                        "latitude": "41.867379",
+                        "longitude": "-87.627031",
+                        "organization": 1,
+                        "stop_code": "41400",
+                        "tag_color": "#ccc",
+                        "tag_label": "Roosevelt",
+                        "tag_text_color": "#000"
+                      }
+                    ],
+                    "stops": [
+                      {
+                        "accessibility": true,
+                        "id": 9035,
+                        "label": "Broadway & Argyle, Northbound, Northeast Corner (14454)",
+                        "latitude": "41.973368",
+                        "longitude": "-87.659648",
+                        "organization": 1,
+                        "stop_code": "14454",
+                        "tag_color": "#ccc",
+                        "tag_label": "Broadway & Argyle - 14454",
+                        "tag_text_color": "#000"
+                      },
+                      {
+                        "accessibility": true,
+                        "id": 3699,
+                        "label": "Broadway & Argyle, Southbound, Westside of the Street (5345)",
+                        "latitude": "41.973312",
+                        "longitude": "-87.659892",
+                        "organization": 1,
+                        "stop_code": "5345",
+                        "tag_color": "#ccc",
+                        "tag_label": "Broadway & Argyle - 5345",
+                        "tag_text_color": "#000"
+                      },
+                      {
+                        "accessibility": true,
+                        "id": 11032,
+                        "label": "Roosevelt (Elevated) (30080)",
+                        "latitude": "41.867405",
+                        "longitude": "-87.626590",
+                        "organization": 1,
+                        "stop_code": "30080",
+                        "tag_color": "#ccc",
+                        "tag_label": "Roosevelt (Elevated) - 30080",
+                        "tag_text_color": "#000"
+                      },
+                      {
+                        "accessibility": true,
+                        "id": 11033,
+                        "label": "Roosevelt (Elevated) (30081)",
+                        "latitude": "41.867405",
+                        "longitude": "-87.626590",
+                        "organization": 1,
+                        "stop_code": "30081",
+                        "tag_color": "#ccc",
+                        "tag_label": "Roosevelt (Elevated) - 30081",
+                        "tag_text_color": "#000"
+                      },
+                      {
+                        "accessibility": true,
+                        "id": 11217,
+                        "label": "Roosevelt (Subway) (30269)",
+                        "latitude": "41.867368",
+                        "longitude": "-87.627402",
+                        "organization": 1,
+                        "stop_code": "30269",
+                        "tag_color": "#ccc",
+                        "tag_label": "Roosevelt (Subway) - 30269",
+                        "tag_text_color": "#000"
+                      },
+                      {
+                        "accessibility": true,
+                        "id": 11218,
+                        "label": "Roosevelt (Subway) (30270)",
+                        "latitude": "41.867368",
+                        "longitude": "-87.627402",
+                        "organization": 1,
+                        "stop_code": "30270",
+                        "tag_color": "#ccc",
+                        "tag_label": "Roosevelt (Subway) - 30270",
+                        "tag_text_color": "#000"
+                      }
+                    ]
+                  },
+                  "zip_code": "10001"
+                }
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Display"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "summary": "Get a display's context",
+        "description": "A way for a display to ask \"Who am I and what do I care about?\""
+      },
+      "parameters": []
+    },
+    "/ixntouch/arrivals/{display_id}/{mode_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CTA Arrival"
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "ixn_background_color": "009B3A",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "015"
+                  },
+                  "ixn_destination_name": "Ashland/63rd",
+                  "ixn_index": 0,
+                  "ixn_line": "Green Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "DUE",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "F9461C",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "712"
+                  },
+                  "ixn_destination_name": "Midway",
+                  "ixn_index": 1,
+                  "ixn_line": "Orange Line",
+                  "ixn_route_status": "Normal Service",
+                  "ixn_status": "DUE",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "826"
+                  },
+                  "ixn_destination_name": "95th/Dan Ryan",
+                  "ixn_index": 2,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "2",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30270",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "F9461C",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "713"
+                  },
+                  "ixn_destination_name": "Loop",
+                  "ixn_index": 3,
+                  "ixn_line": "Orange Line",
+                  "ixn_route_status": "Normal Service",
+                  "ixn_status": "3",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30080",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "924"
+                  },
+                  "ixn_destination_name": "Howard",
+                  "ixn_index": 4,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "4",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30269",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "009B3A",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "012"
+                  },
+                  "ixn_destination_name": "Harlem/Lake",
+                  "ixn_index": 5,
+                  "ixn_line": "Green Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "5",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30080",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "009B3A",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "016"
+                  },
+                  "ixn_destination_name": "Cottage Grove",
+                  "ixn_index": 6,
+                  "ixn_line": "Green Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "6",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "827"
+                  },
+                  "ixn_destination_name": "95th/Dan Ryan",
+                  "ixn_index": 7,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "10",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30270",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "F9461C",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "719"
+                  },
+                  "ixn_destination_name": "Midway",
+                  "ixn_index": 8,
+                  "ixn_line": "Orange Line",
+                  "ixn_route_status": "Normal Service",
+                  "ixn_status": "10",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "925"
+                  },
+                  "ixn_destination_name": "Howard",
+                  "ixn_index": 9,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "11",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30269",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "912"
+                  },
+                  "ixn_destination_name": "95th/Dan Ryan",
+                  "ixn_index": 10,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "12",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30270",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "F9461C",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "709"
+                  },
+                  "ixn_destination_name": "Loop",
+                  "ixn_index": 11,
+                  "ixn_line": "Orange Line",
+                  "ixn_route_status": "Normal Service",
+                  "ixn_status": "13",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30080",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "009B3A",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "010"
+                  },
+                  "ixn_destination_name": "Ashland/63rd",
+                  "ixn_index": 12,
+                  "ixn_line": "Green Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "14",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "F9461C",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "717"
+                  },
+                  "ixn_destination_name": "Midway",
+                  "ixn_index": 13,
+                  "ixn_line": "Orange Line",
+                  "ixn_route_status": "Normal Service",
+                  "ixn_status": "15",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30081",
+                  "ixn_text_color": "FFFFFF"
+                },
+                {
+                  "ixn_background_color": "C60C30",
+                  "ixn_custom_data": {
+                    "flags": null,
+                    "isSch": "0",
+                    "rn": "810"
+                  },
+                  "ixn_destination_name": "95th/Dan Ryan",
+                  "ixn_index": 14,
+                  "ixn_line": "Red Line",
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_status": "18",
+                  "ixn_status_extra_info": "mins",
+                  "ixn_status_message": "live",
+                  "ixn_stop_id": "30270",
+                  "ixn_text_color": "FFFFFF"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "summary": "List the arrivals for a display",
+        "parameters": [
+          {
+            "$ref": "#/parameters/display_id"
+          },
+          {
+            "$ref": "#/parameters/mode_id"
+          }
+        ],
+        "description": "**This endpoint is CTA specific.**",
+        "deprecated": true
+      },
+      "parameters": [
+        {
+          "name": "display_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mode_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/alerts/org/{org_short_key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Alert"
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "active": true,
+                  "created": "2018-10-24T16:05:56.747281Z",
+                  "description": "Test Alert Headline Short Description 2",
+                  "end": "2018-11-23T15:47:00Z",
+                  "header": "Test Alert Headline 2",
+                  "id": 72305,
+                  "level": 2,
+                  "object_tag_url": "http://platform:8000/api/v1/alerts/72305/object-tags/",
+                  "organization": 1,
+                  "source": "CTA-Alerts",
+                  "start": "2018-10-24T14:43:00Z",
+                  "status": "active",
+                  "ta_id": "53214",
+                  "ta_raw_data": "{\"AlertId\": \"53214\", \"Headline\": \"Test Alert Headline 2\", \"ShortDescription\": \"Test Alert Headline Short Description 2\", \"FullDescription\": {\"#cdata-section\": \"<p>Test Alert Headline Long Description</p>\\r\\n\"}, \"SeverityScore\": \"40\", \"SeverityColor\": \"B45F04\", \"SeverityCSS\": \"minor\", \"Impact\": \"Minor Delays\", \"EventStart\": \"2018-10-24T09:43:00\", \"EventEnd\": \"2018-11-23T09:47:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53214\"}, \"ImpactedService\": {\"Service\": {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Blue Line\", \"ServiceId\": \"Blue\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/blueline/\"}}}, \"ttim\": \"0\", \"GUID\": \"ede12b8e-6ba9-4a86-83a1-c8390fe521dc\"}",
+                  "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/72305/",
+                  "tag_walk_url": "http://platform:8000/api/v1/alerts/72305/tag-walk/",
+                  "type": "Minor Delays"
+                },
+                {
+                  "active": true,
+                  "created": "2018-10-24T15:37:57.702610Z",
+                  "description": "Test Alert Headline Short Description 2",
+                  "end": "2018-11-23T15:47:00Z",
+                  "header": "Test Alert Headline 2",
+                  "id": 72303,
+                  "level": 2,
+                  "object_tag_url": "http://platform:8000/api/v1/alerts/72303/object-tags/",
+                  "organization": 1,
+                  "source": "CTA-Alerts",
+                  "start": "2018-10-24T14:43:00Z",
+                  "status": "active",
+                  "ta_id": "53213",
+                  "ta_raw_data": "{\"AlertId\": \"53213\", \"Headline\": \"Test Alert Headline 2\", \"ShortDescription\": \"Test Alert Headline Short Description 2\", \"FullDescription\": {\"#cdata-section\": \"<p>Test Alert Headline Long Description</p>\\r\\n\"}, \"SeverityScore\": \"40\", \"SeverityColor\": \"B45F04\", \"SeverityCSS\": \"minor\", \"Impact\": \"Minor Delays\", \"EventStart\": \"2018-10-24T09:43:00\", \"EventEnd\": \"2018-11-23T09:47:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53213\"}, \"ImpactedService\": {\"Service\": {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Yellow Line\", \"ServiceId\": \"Y\", \"ServiceBackColor\": \"f9e300\", \"ServiceTextColor\": \"000000\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/yellowline/\"}}}, \"ttim\": \"0\", \"GUID\": \"a0d9a410-bc57-43d7-979c-3a23c209e7eb\"}",
+                  "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/72303/",
+                  "tag_walk_url": "http://platform:8000/api/v1/alerts/72303/tag-walk/",
+                  "type": "Minor Delays"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "summary": "List alerts by organization",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "org_short_key",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "deprecated": true
+      },
+      "parameters": [
+        {
+          "name": "org_short_key",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/service-status/{mode_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ixn_route": {
+                    "type": "string"
+                  },
+                  "ixn_route_alerts_url": {
+                    "type": "string"
+                  },
+                  "ixn_route_color_code": {
+                    "type": "string"
+                  },
+                  "ixn_route_id": {
+                    "type": "integer"
+                  },
+                  "ixn_route_status": {
+                    "type": "string"
+                  },
+                  "ixn_route_status_color": {
+                    "type": "string"
+                  },
+                  "ixn_route_text_color": {
+                    "type": "string"
+                  },
+                  "ixn_service_id": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "ixn_route": "Blue Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/131",
+                  "ixn_route_color_code": "00a1de",
+                  "ixn_route_id": 131,
+                  "ixn_route_status": "Planned Work w/Station(s) Bypassed",
+                  "ixn_route_status_color": "06c",
+                  "ixn_route_text_color": "FFFFFF",
+                  "ixn_service_id": "Blue"
+                },
+                {
+                  "ixn_route": "Brown Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/135",
+                  "ixn_route_color_code": "62361b",
+                  "ixn_route_id": 135,
+                  "ixn_route_status": "Normal Service",
+                  "ixn_route_status_color": "404040",
+                  "ixn_route_text_color": "ffffff",
+                  "ixn_service_id": "Brn"
+                },
+                {
+                  "ixn_route": "Green Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/133",
+                  "ixn_route_color_code": "009b3a",
+                  "ixn_route_id": 133,
+                  "ixn_route_status": "Significant Delays",
+                  "ixn_route_status_color": "B45F04",
+                  "ixn_route_text_color": "FFFFFF",
+                  "ixn_service_id": "G"
+                },
+                {
+                  "ixn_route": "Orange Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/134",
+                  "ixn_route_color_code": "f9461c",
+                  "ixn_route_id": 134,
+                  "ixn_route_status": "Normal Service",
+                  "ixn_route_status_color": "404040",
+                  "ixn_route_text_color": "ffffff",
+                  "ixn_service_id": "Org"
+                },
+                {
+                  "ixn_route": "Pink Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/132",
+                  "ixn_route_color_code": "e27ea6",
+                  "ixn_route_id": 132,
+                  "ixn_route_status": "Significant Delays",
+                  "ixn_route_status_color": "B45F04",
+                  "ixn_route_text_color": "ffffff",
+                  "ixn_service_id": "Pink"
+                },
+                {
+                  "ixn_route": "Purple Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/129",
+                  "ixn_route_color_code": "522398",
+                  "ixn_route_id": 129,
+                  "ixn_route_status": "Normal Service",
+                  "ixn_route_status_color": "404040",
+                  "ixn_route_text_color": "ffffff",
+                  "ixn_service_id": "P"
+                },
+                {
+                  "ixn_route": "Red Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/128",
+                  "ixn_route_color_code": "c60c30",
+                  "ixn_route_id": 128,
+                  "ixn_route_status": "Special Note",
+                  "ixn_route_status_color": "000000",
+                  "ixn_route_text_color": "ffffff",
+                  "ixn_service_id": "Red"
+                },
+                {
+                  "ixn_route": "Yellow Line",
+                  "ixn_route_alerts_url": "/ixntouch/alerts/route/130",
+                  "ixn_route_color_code": "f9e300",
+                  "ixn_route_id": 130,
+                  "ixn_route_status": "Normal Service",
+                  "ixn_route_status_color": "404040",
+                  "ixn_route_text_color": "000000",
+                  "ixn_service_id": "Y"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "description": "Returns the service status by line for CTA subway and buses.",
+        "summary": "Get the service status",
+        "deprecated": true
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/mode_id"
+        }
+      ]
+    },
+    "/ixntouch/playlist/{display_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "exclusive": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "playlist": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "asset": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "category": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "organization_id": {
+                                    "type": "integer"
+                                  },
+                                  "target_percentage": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "content_type": {
+                                "type": "null"
+                              },
+                              "end_broadcast": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "organization": {
+                                "type": "integer"
+                              },
+                              "play_weight": {
+                                "type": "integer"
+                              },
+                              "start_broadcast": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "frame": {
+                            "type": "integer"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "category": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "organization_id": {
+                                "type": "integer"
+                              },
+                              "target_percentage": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "created": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "end": {
+                            "type": "null"
+                          },
+                          "header": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "integer"
+                          },
+                          "organization": {
+                            "type": "integer"
+                          },
+                          "routes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "route_code": {
+                                  "type": "string"
+                                },
+                                "tag_color": {
+                                  "type": "string"
+                                },
+                                "tag_label": {
+                                  "type": "string"
+                                },
+                                "tag_text_color": {
+                                  "type": "string"
+                                },
+                                "transit_mode": {
+                                  "type": "integer"
+                                },
+                                "transit_mode_type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "start": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "ta_id": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "effective_play_weight": {
+                        "type": "integer"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "template": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "meta": {
+                  "exclusive": false
+                },
+                "playlist": [
+                  {
+                    "data": {
+                      "asset": "http://platform:8000/media/1540578739006365.jpg",
+                      "content": {
+                        "active": true,
+                        "category": {
+                          "id": 13,
+                          "name": "PSA",
+                          "organization_id": 1,
+                          "target_percentage": 10
+                        },
+                        "content_type": null,
+                        "end_broadcast": "2028-10-26T18:31:40Z",
+                        "id": 81,
+                        "name": "CTA IxNTouch Content",
+                        "organization": 1,
+                        "play_weight": 1,
+                        "start_broadcast": "2018-10-26T18:31:38Z",
+                        "status": "active"
+                      },
+                      "frame": 13,
+                      "id": 94
+                    },
+                    "effective_play_weight": 10,
+                    "id": 94,
+                    "template": "cta_content"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:41.359458Z",
+                      "description": "The Midway stn kiss & ride drop-off/pick-up lot will be temporarily closed. A temporary kiss & ride will be provided in the NE corner of the park & ride lot.",
+                      "end": null,
+                      "header": "Midway Station Kiss & Ride Temporary Closure, Relocation",
+                      "id": 2085,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 134,
+                          "label": "Orange Line",
+                          "route_code": "Org",
+                          "tag_color": "F9461C",
+                          "tag_label": "Orange Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-08-04T12:00:00Z",
+                      "status": "active",
+                      "ta_id": "50367",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2085,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:41.296370Z",
+                      "description": "The Kimball-bound platform elevator at the Montrose station will be temporarily out of service.",
+                      "end": null,
+                      "header": "Montrose Kimball-bound Platform Elevator Out of Service",
+                      "id": 2084,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 135,
+                          "label": "Brown Line",
+                          "route_code": "Brn",
+                          "tag_color": "62361B",
+                          "tag_label": "Brown Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-07-17T05:00:00Z",
+                      "status": "active",
+                      "ta_id": "50260",
+                      "type": "Elevator Work"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2084,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:40.143133Z",
+                      "description": "During spring thru fall, the Chicago River bridges are periodically opened. Customers should expect minor delays during bridge lifts.",
+                      "end": "2018-11-12T06:00:00Z",
+                      "header": "Chicago River Bridge Lifts",
+                      "id": 2071,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 135,
+                          "label": "Brown Line",
+                          "route_code": "Brn",
+                          "tag_color": "62361B",
+                          "tag_label": "Brown Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        },
+                        {
+                          "id": 133,
+                          "label": "Green Line",
+                          "route_code": "G",
+                          "tag_color": "009B3A",
+                          "tag_label": "Green Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        },
+                        {
+                          "id": 132,
+                          "label": "Pink Line",
+                          "route_code": "Pink",
+                          "tag_color": "E27EA6",
+                          "tag_label": "Pink Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-04-01T05:00:00Z",
+                      "status": "active",
+                      "ta_id": "47188",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2071,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:39.423455Z",
+                      "description": "IMD station Ogden & Paulina entrances are temporarily closed: Use Damen entrance 1/4-mile west of Ogden bridge and 3/8-mile west of Paulina bridge.",
+                      "end": null,
+                      "header": "Illinois Medical District Station Ogden and Paulina Entrances Temporary Closure ",
+                      "id": 2063,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 131,
+                          "label": "Blue Line",
+                          "route_code": "Blue",
+                          "tag_color": "00A1DE",
+                          "tag_label": "Blue Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2017-07-28T14:00:00Z",
+                      "status": "active",
+                      "ta_id": "42220",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2063,
+                    "template": "cta_alerts"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "description": "Returns a weighted playlist of alerts and content. This endpoint is deprecated, as it only looks for content for the frame with the id `ixntouch_fullscreen`.",
+        "summary": "Get a playlist for a display",
+        "parameters": [
+          {
+            "$ref": "#/parameters/display_id"
+          }
+        ],
+        "deprecated": true
+      },
+      "parameters": [
+        {
+          "name": "display_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/playlist/{display_id}/{frame_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "exclusive": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "playlist": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "asset": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "category": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "organization_id": {
+                                    "type": "integer"
+                                  },
+                                  "target_percentage": {
+                                    "type": "integer"
+                                  }
+                                }
+                              },
+                              "content_type": {
+                                "type": "null"
+                              },
+                              "end_broadcast": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "organization": {
+                                "type": "integer"
+                              },
+                              "play_weight": {
+                                "type": "integer"
+                              },
+                              "start_broadcast": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "frame": {
+                            "type": "integer"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "category": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "organization_id": {
+                                "type": "integer"
+                              },
+                              "target_percentage": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "created": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "end": {
+                            "type": "null"
+                          },
+                          "header": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "integer"
+                          },
+                          "organization": {
+                            "type": "integer"
+                          },
+                          "routes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "route_code": {
+                                  "type": "string"
+                                },
+                                "tag_color": {
+                                  "type": "string"
+                                },
+                                "tag_label": {
+                                  "type": "string"
+                                },
+                                "tag_text_color": {
+                                  "type": "string"
+                                },
+                                "transit_mode": {
+                                  "type": "integer"
+                                },
+                                "transit_mode_type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "start": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "ta_id": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "effective_play_weight": {
+                        "type": "integer"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "template": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "meta": {
+                  "exclusive": false
+                },
+                "playlist": [
+                  {
+                    "data": {
+                      "asset": "http://platform:8000/media/1540578739006365.jpg",
+                      "content": {
+                        "active": true,
+                        "category": {
+                          "id": 13,
+                          "name": "PSA",
+                          "organization_id": 1,
+                          "target_percentage": 10
+                        },
+                        "content_type": null,
+                        "end_broadcast": "2028-10-26T18:31:40Z",
+                        "id": 81,
+                        "name": "CTA IxNTouch Content",
+                        "organization": 1,
+                        "play_weight": 1,
+                        "start_broadcast": "2018-10-26T18:31:38Z",
+                        "status": "active"
+                      },
+                      "frame": 13,
+                      "id": 94
+                    },
+                    "effective_play_weight": 10,
+                    "id": 94,
+                    "template": "cta_content"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:41.359458Z",
+                      "description": "The Midway stn kiss & ride drop-off/pick-up lot will be temporarily closed. A temporary kiss & ride will be provided in the NE corner of the park & ride lot.",
+                      "end": null,
+                      "header": "Midway Station Kiss & Ride Temporary Closure, Relocation",
+                      "id": 2085,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 134,
+                          "label": "Orange Line",
+                          "route_code": "Org",
+                          "tag_color": "F9461C",
+                          "tag_label": "Orange Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-08-04T12:00:00Z",
+                      "status": "active",
+                      "ta_id": "50367",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2085,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:41.296370Z",
+                      "description": "The Kimball-bound platform elevator at the Montrose station will be temporarily out of service.",
+                      "end": null,
+                      "header": "Montrose Kimball-bound Platform Elevator Out of Service",
+                      "id": 2084,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 135,
+                          "label": "Brown Line",
+                          "route_code": "Brn",
+                          "tag_color": "62361B",
+                          "tag_label": "Brown Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-07-17T05:00:00Z",
+                      "status": "active",
+                      "ta_id": "50260",
+                      "type": "Elevator Work"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2084,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:40.143133Z",
+                      "description": "During spring thru fall, the Chicago River bridges are periodically opened. Customers should expect minor delays during bridge lifts.",
+                      "end": "2018-11-12T06:00:00Z",
+                      "header": "Chicago River Bridge Lifts",
+                      "id": 2071,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 135,
+                          "label": "Brown Line",
+                          "route_code": "Brn",
+                          "tag_color": "62361B",
+                          "tag_label": "Brown Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        },
+                        {
+                          "id": 133,
+                          "label": "Green Line",
+                          "route_code": "G",
+                          "tag_color": "009B3A",
+                          "tag_label": "Green Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        },
+                        {
+                          "id": 132,
+                          "label": "Pink Line",
+                          "route_code": "Pink",
+                          "tag_color": "E27EA6",
+                          "tag_label": "Pink Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2018-04-01T05:00:00Z",
+                      "status": "active",
+                      "ta_id": "47188",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2071,
+                    "template": "cta_alerts"
+                  },
+                  {
+                    "data": {
+                      "active": true,
+                      "category": {
+                        "id": 16,
+                        "name": "Alert",
+                        "organization_id": 1,
+                        "target_percentage": 30
+                      },
+                      "created": "2018-07-31T16:28:39.423455Z",
+                      "description": "IMD station Ogden & Paulina entrances are temporarily closed: Use Damen entrance 1/4-mile west of Ogden bridge and 3/8-mile west of Paulina bridge.",
+                      "end": null,
+                      "header": "Illinois Medical District Station Ogden and Paulina Entrances Temporary Closure ",
+                      "id": 2063,
+                      "level": 1,
+                      "organization": 1,
+                      "routes": [
+                        {
+                          "id": 131,
+                          "label": "Blue Line",
+                          "route_code": "Blue",
+                          "tag_color": "00A1DE",
+                          "tag_label": "Blue Line",
+                          "tag_text_color": "FFFFFF",
+                          "transit_mode": 1,
+                          "transit_mode_type": "SUBWAY"
+                        }
+                      ],
+                      "source": "CTA-Alerts",
+                      "start": "2017-07-28T14:00:00Z",
+                      "status": "active",
+                      "ta_id": "42220",
+                      "type": "Special Note"
+                    },
+                    "effective_play_weight": 8,
+                    "id": 2063,
+                    "template": "cta_alerts"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "description": "Returns a weighted playlist of alerts and content for the requested frame and display.",
+        "summary": "Get a playlist for a frame on display",
+        "parameters": [
+          {
+            "$ref": "#/parameters/display_id"
+          },
+          {
+            "$ref": "#/parameters/frame_id"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "display_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/alerts/route/{route_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "created": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "end": {
+                    "type": "string"
+                  },
+                  "header": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "level": {
+                    "type": "integer"
+                  },
+                  "object_tag_url": {
+                    "type": "string"
+                  },
+                  "organization": {
+                    "type": "integer"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "ta_id": {
+                    "type": "string"
+                  },
+                  "ta_raw_data": {
+                    "type": "string"
+                  },
+                  "tag_walk_expand_url": {
+                    "type": "string"
+                  },
+                  "tag_walk_url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "active": true,
+                  "created": "2018-10-24T16:05:56.747281Z",
+                  "description": "Test Alert Headline Short Description 2",
+                  "end": "2018-11-23T15:47:00Z",
+                  "header": "Test Alert Headline 2",
+                  "id": 72305,
+                  "level": 2,
+                  "object_tag_url": "http://platform:8000/api/v1/alerts/72305/object-tags/",
+                  "organization": 1,
+                  "source": "CTA-Alerts",
+                  "start": "2018-10-24T14:43:00Z",
+                  "status": "active",
+                  "ta_id": "53214",
+                  "ta_raw_data": "{\"AlertId\": \"53214\", \"Headline\": \"Test Alert Headline 2\", \"ShortDescription\": \"Test Alert Headline Short Description 2\", \"FullDescription\": {\"#cdata-section\": \"<p>Test Alert Headline Long Description</p>\\r\\n\"}, \"SeverityScore\": \"40\", \"SeverityColor\": \"B45F04\", \"SeverityCSS\": \"minor\", \"Impact\": \"Minor Delays\", \"EventStart\": \"2018-10-24T09:43:00\", \"EventEnd\": \"2018-11-23T09:47:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53214\"}, \"ImpactedService\": {\"Service\": {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Blue Line\", \"ServiceId\": \"Blue\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/blueline/\"}}}, \"ttim\": \"0\", \"GUID\": \"ede12b8e-6ba9-4a86-83a1-c8390fe521dc\"}",
+                  "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/72305/",
+                  "tag_walk_url": "http://platform:8000/api/v1/alerts/72305/tag-walk/",
+                  "type": "Minor Delays"
+                },
+                {
+                  "active": true,
+                  "created": "2018-10-24T15:37:57.702610Z",
+                  "description": "Test Alert Headline Short Description 2",
+                  "end": "2018-11-23T15:47:00Z",
+                  "header": "Test Alert Headline 2",
+                  "id": 72303,
+                  "level": 2,
+                  "object_tag_url": "http://platform:8000/api/v1/alerts/72303/object-tags/",
+                  "organization": 1,
+                  "source": "CTA-Alerts",
+                  "start": "2018-10-24T14:43:00Z",
+                  "status": "active",
+                  "ta_id": "53213",
+                  "ta_raw_data": "{\"AlertId\": \"53213\", \"Headline\": \"Test Alert Headline 2\", \"ShortDescription\": \"Test Alert Headline Short Description 2\", \"FullDescription\": {\"#cdata-section\": \"<p>Test Alert Headline Long Description</p>\\r\\n\"}, \"SeverityScore\": \"40\", \"SeverityColor\": \"B45F04\", \"SeverityCSS\": \"minor\", \"Impact\": \"Minor Delays\", \"EventStart\": \"2018-10-24T09:43:00\", \"EventEnd\": \"2018-11-23T09:47:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53213\"}, \"ImpactedService\": {\"Service\": {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Yellow Line\", \"ServiceId\": \"Y\", \"ServiceBackColor\": \"f9e300\", \"ServiceTextColor\": \"000000\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/yellowline/\"}}}, \"ttim\": \"0\", \"GUID\": \"a0d9a410-bc57-43d7-979c-3a23c209e7eb\"}",
+                  "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/72303/",
+                  "tag_walk_url": "http://platform:8000/api/v1/alerts/72303/tag-walk/",
+                  "type": "Minor Delays"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "summary": "List alerts by route",
+        "parameters": [
+          {
+            "$ref": "#/parameters/route_id"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "route_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/maps/{display_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "asset": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "object_tag_url": {
+                    "type": "string"
+                  },
+                  "object_tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "attribute": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "label": {
+                              "type": "string"
+                            },
+                            "mode_type": {
+                              "type": "string"
+                            },
+                            "organization": {
+                              "type": "integer"
+                            },
+                            "tag_color": {
+                              "type": "string"
+                            },
+                            "tag_label": {
+                              "type": "string"
+                            },
+                            "tag_text_color": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "attribute_id": {
+                          "type": "integer"
+                        },
+                        "attribute_type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "targeted_object_id": {
+                          "type": "integer"
+                        },
+                        "targeted_object_type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "organization": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "asset": "http://platform:8000/media/1541801738985967.svg",
+                  "id": 1,
+                  "name": "CTA Map",
+                  "object_tag_url": "http://platform:8000/api/v1/maps/1/object-tags/",
+                  "object_tags": [
+                    {
+                      "attribute": {
+                        "id": 1,
+                        "label": "SUBWAY",
+                        "mode_type": "SUBWAY",
+                        "organization": 1,
+                        "tag_color": "Red",
+                        "tag_label": "SUBWAY",
+                        "tag_text_color": "#000"
+                      },
+                      "attribute_id": 1,
+                      "attribute_type": "MODE",
+                      "id": 3983,
+                      "targeted_object_id": 1,
+                      "targeted_object_type": "MAP"
+                    }
+                  ],
+                  "organization": 1
+                }
+              ]
+            }
+          }
+        },
+        "summary": "Get the maps for a display",
+        "description": "Returns all the maps for a display's organization.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/display_id"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "display_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/alerts/org/{org_short_key}/mode/{mode_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "route_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "created": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "end": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      },
+                      "header": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "level": {
+                        "type": "integer"
+                      },
+                      "object_tag_url": {
+                        "type": "string"
+                      },
+                      "organization": {
+                        "type": "integer"
+                      },
+                      "routes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "label": {
+                              "type": "string"
+                            },
+                            "route_code": {
+                              "type": "string"
+                            },
+                            "tag_color": {
+                              "type": "string"
+                            },
+                            "tag_label": {
+                              "type": "string"
+                            },
+                            "tag_text_color": {
+                              "type": "string"
+                            },
+                            "transit_mode": {
+                              "type": "integer"
+                            },
+                            "transit_mode_type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "start": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "ta_id": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      },
+                      "ta_raw_data": {
+                        "type": "string"
+                      },
+                      "tag_walk_expand_url": {
+                        "type": "string"
+                      },
+                      "tag_walk_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "128": [
+                  {
+                    "active": true,
+                    "created": "2019-02-21T17:39:11.625129Z",
+                    "description": "Brown & Purple Line Train Tracker data partly unavailable near downtown due to ongoing signal upgrade work; engineers working to restore info; srvc unaffected.",
+                    "end": null,
+                    "header": "Some CTA Train Tracker Info Partially Unavailable",
+                    "id": 95865,
+                    "level": 1,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/95865/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2018-11-12T06:00:00Z",
+                    "status": "active",
+                    "ta_id": "53847",
+                    "ta_raw_data": "{\"AlertId\": \"53847\", \"Headline\": \"Some CTA Train Tracker Info Partially Unavailable\", \"ShortDescription\": \"Brown & Purple Line Train Tracker data partly unavailable near downtown due to ongoing signal upgrade work; engineers working to restore info; srvc unaffected.\", \"FullDescription\": {\"#cdata-section\": \"<p>Estimated arrival times for Brown Line and Purple Line Express services in CTA Train Tracker may be partially/temporarily unavailable in areas near&nbsp;downtown, due to&nbsp;signal upgrade work being done in the area between Armitage and the Loop.</p>\\r\\n\\r\\n<p>We are aware of the issue and engineers have been working to restore data and resolve this issue as quickly as possible.&nbsp;Limited estimated arrival&nbsp;information for trains in this area&nbsp;may be unavailable&nbsp;at certain stations in and near the area.</p>\\r\\n\\r\\n<p>Service is unaffected; see alerts for Brown or Purple Line service to learn if trains are not operating as scheduled or otherwise normally.</p>\\r\\n\\r\\n<p>Your patience is appreciated.</p>\\r\\n\"}, \"SeverityScore\": \"12\", \"SeverityColor\": \"000000\", \"SeverityCSS\": \"special-note\", \"Impact\": \"Special note\", \"EventStart\": \"2018-11-12\", \"EventEnd\": null, \"TBD\": \"1\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53847\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Armitage\", \"ServiceId\": \"40660\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=19\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Belmont\", \"ServiceId\": \"41320\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=25\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Chicago\", \"ServiceId\": \"40710\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=37\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Diversey\", \"ServiceId\": \"40530\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=53\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Fullerton\", \"ServiceId\": \"41220\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=59\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Merchandise Mart\", \"ServiceId\": \"40460\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=98\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Sedgwick\", \"ServiceId\": \"40800\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=124\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Wellington\", \"ServiceId\": \"41210\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=145\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Brown Line\", \"ServiceId\": \"Brn\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/brownline/\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Purple Line Express\", \"ServiceId\": \"Pexp\", \"ServiceBackColor\": \"522398\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/purpleline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"fe77175b-db70-4ee7-8e59-08ba0661c0cb\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/95865/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/95865/tag-walk/",
+                    "type": "Special note"
+                  },
+                  {
+                    "active": true,
+                    "created": "2019-02-20T15:48:55.576109Z",
+                    "description": "Hide southbound subway trains when all Red Line subway service is rerouted via the elevated lines without affecting southbound service on the elevated platform",
+                    "end": "2019-09-07T14:43:00Z",
+                    "header": "Hide southbound subway trains",
+                    "id": 95551,
+                    "level": 2,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/95551/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2019-02-20T15:43:00Z",
+                    "status": "active",
+                    "ta_id": "55254",
+                    "ta_raw_data": "{\"AlertId\": \"55254\", \"Headline\": \"Hide southbound subway trains\", \"ShortDescription\": \"Hide southbound subway trains when all Red Line subway service is rerouted via the elevated lines without affecting southbound service on the elevated platform\", \"FullDescription\": {\"#cdata-section\": \"<p>Hide southbound subway trains when all Red Line subway service is rerouted via the elevated lines without affecting southbound service on the elevated platform at Roosevelt.</p>\\r\\n\"}, \"SeverityScore\": \"34\", \"SeverityColor\": \"06c\", \"SeverityCSS\": \"planned\", \"Impact\": \"Planned Work w/Part Closure\", \"EventStart\": \"2019-02-20T09:43:00\", \"EventEnd\": \"2019-09-07T09:43:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=55254\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Roosevelt\", \"ServiceId\": \"41400\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=122\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Red Line\", \"ServiceId\": \"Red\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/redline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"76928650-097b-464b-ac27-6d198d89bebe\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/95551/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/95551/tag-walk/",
+                    "type": "Planned Work w/Part Closure"
+                  },
+                  {
+                    "active": true,
+                    "created": "2018-09-14T18:26:44.426015Z",
+                    "description": "Morning/evening rush periods, some Red Line trains will operate south of Roosevelt on the South Side elevated and Ashland branch (used by Green Line trains). ",
+                    "end": null,
+                    "header": "Rush Period Service Changes Between Roosevelt and 95th",
+                    "id": 61559,
+                    "level": 1,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/61559/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2018-07-30T05:00:00Z",
+                    "status": "active",
+                    "ta_id": "50508",
+                    "ta_raw_data": "{\"AlertId\": \"50508\", \"Headline\": \"Rush Period Service Changes Between Roosevelt and 95th\", \"ShortDescription\": \"Morning/evening rush periods, some Red Line trains will operate south of Roosevelt on the South Side elevated and Ashland branch (used by Green Line trains). \", \"FullDescription\": {\"#cdata-section\": \"<p><strong>How does this affect my trip?</strong><br />\\r\\nDuring morning and evening rush periods only, some Red Line trains will be rerouted south of Roosevelt onto the South Side elevated and&nbsp;Ashland branch (normally used by Green Line trains). These trains will operate between Howard and Ashland/63rd, via the subway.</p>\\r\\n\\r\\n<p><strong>Morning rush period:</strong></p>\\r\\n\\r\\n<ul>\\r\\n\\t<li>Howard-bound service will depart 95th at the current frequency, and operate normally. In the late morning rush period and&nbsp;mid-morning, a small number of additional trips will also begin at Ashland/63rd and operate to Howard via the South Side elevated and subway.</li>\\r\\n\\t<li>Every other train beginning its trip from Howard towards 95th will be rerouted after Roosevelt station to the Ashland/63rd&nbsp;Green Line station, from 7:50am to 9:25am (time departing Roosevelt). The remaining Red Line trains will continue the&nbsp;regular route to 95th.</li>\\r\\n</ul>\\r\\n\\r\\n<p><strong>Evening rush period:</strong></p>\\r\\n\\r\\n<ul>\\r\\n\\t<li>95th-bound service will depart Howard at the current frequency, and operate normally. A small number of additional trips will also operate to Ashland/63rd via the subway and South Side elevated.</li>\\r\\n\\t<li>Every other Howard-bound train entering downtown south of Roosevelt will originate from the Ashland/63rd Green Line&nbsp;station, from 4:30pm to 6:05pm (time arriving at Roosevelt).</li>\\r\\n</ul>\\r\\n\\r\\n<p>Trains will continue to operate between Howard and 95th 24-hour a day, seven days a week, and are not affected during&nbsp;non-rush periods.</p>\\r\\n\\r\\n<p>Check destination signs and listen for announcements during weekday rush periods.</p>\\r\\n\\r\\n<p>Allow extra travel time.</p>\\r\\n\\r\\n<p><strong>Why is service being changed?</strong><br />\\r\\nSome Red Line trains are being rerouted to maintain Red Line service, keep the 95th/Dan Ryan station open, and minimize customer impacts during construction for the <a href=\\\"http: //transitchicago.com/95thTerminal\\\">95th Street Terminal Improvement Project</a>.</p>\\r\\n\\r\\n<h3>Map</h3>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https: //www.transitchicago.com/assets/1/6/RedViaSSelevMap_r1.png\\\" /></p>\\r\\n\"}, \"SeverityScore\": \"20\", \"SeverityColor\": \"000000\", \"SeverityCSS\": \"planned\", \"Impact\": \"Service Change\", \"EventStart\": \"2018-07-30\", \"EventEnd\": null, \"TBD\": \"1\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=50508\"}, \"ImpactedService\": {\"Service\": {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Red Line\", \"ServiceId\": \"Red\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/redline/\"}}}, \"ttim\": \"0\", \"GUID\": \"9d27bdc1-fe7a-4d11-a2d3-af5a3907d35e\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/61559/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/61559/tag-walk/",
+                    "type": "Service Change"
+                  },
+                  {
+                    "active": true,
+                    "created": "2018-12-14T21:15:43.652890Z",
+                    "description": "This is like super important so get rid of any ads and pay attention to me.",
+                    "end": "2018-12-14T23:14:00Z",
+                    "header": "Level 5 Test",
+                    "id": 84625,
+                    "level": 5,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/84625/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "IxNConnect",
+                    "start": "2018-12-14T21:14:27Z",
+                    "status": "inactive",
+                    "ta_id": null,
+                    "ta_raw_data": "",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/84625/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/84625/tag-walk/",
+                    "type": "Test"
+                  },
+                  {
+                    "active": true,
+                    "created": "2018-12-13T20:55:45.518119Z",
+                    "description": "There are 5 levels and this is the top one.",
+                    "end": "2018-12-14T20:55:00Z",
+                    "header": "IxNTouch Level 5",
+                    "id": 84399,
+                    "level": 5,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/84399/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "IxNConnect",
+                    "start": "2018-12-13T20:55:06Z",
+                    "status": "inactive",
+                    "ta_id": null,
+                    "ta_raw_data": "",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/84399/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/84399/tag-walk/",
+                    "type": "IxNTouch Level 5"
+                  },
+                  {
+                    "active": true,
+                    "created": "2018-12-18T16:06:38.078566Z",
+                    "description": "This is a level 5 alert. This should takeover and not allow any body ads.",
+                    "end": "2018-12-18T17:16:40Z",
+                    "header": "Level 5 Alert",
+                    "id": 85191,
+                    "level": 5,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/85191/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "IxNConnect",
+                    "start": "2018-12-18T16:05:20Z",
+                    "status": "inactive",
+                    "ta_id": null,
+                    "ta_raw_data": "",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/85191/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/85191/tag-walk/",
+                    "type": "Test"
+                  }
+                ],
+                "129": [
+                  {
+                    "active": true,
+                    "created": "2019-03-15T20:05:30.191835Z",
+                    "description": "Hide only Brown Line trains at Loop stations without affecting any other lines that share the platforms it uses",
+                    "end": "2020-03-18T20:04:00Z",
+                    "header": "Hide only Brown Line trains at Loop stations",
+                    "id": 100000,
+                    "level": 2,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/100000/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 131,
+                        "label": "Blue Line",
+                        "route_code": "Blue",
+                        "tag_color": "00A1DE",
+                        "tag_label": "Blue Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 132,
+                        "label": "Pink Line",
+                        "route_code": "Pink",
+                        "tag_color": "E27EA6",
+                        "tag_label": "Pink Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2019-02-12T17:47:00Z",
+                    "status": "active",
+                    "ta_id": "55255",
+                    "ta_raw_data": "{\"AlertId\": \"55255\", \"Headline\": \"Hide only Brown Line trains at Loop stations\", \"ShortDescription\": \"Hide only Brown Line trains at Loop stations without affecting any other lines that share the platforms it uses\", \"FullDescription\": {\"#cdata-section\": \"<p>Hide only Brown Line trains at Loop stations without affecting any other lines that share the platforms it uses (typically just Green Line trains to Harlem)</p>\\r\\n\"}, \"SeverityScore\": \"34\", \"SeverityColor\": \"06c\", \"SeverityCSS\": \"planned\", \"Impact\": \"Planned Work w/Part Closure\", \"EventStart\": \"2019-02-12T11:47:00\", \"EventEnd\": \"2020-03-18T15:04:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=55255\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Adams/Wabash\", \"ServiceId\": \"40680\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=14\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Clark/Lake\", \"ServiceId\": \"40380\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=43\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"LaSalle\", \"ServiceId\": \"41340\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=89\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Harold Washington Library-State/Van Buren\", \"ServiceId\": \"40850\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=92\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Washington/Wabash\", \"ServiceId\": \"41700\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=96\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Quincy\", \"ServiceId\": \"40040\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=116\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"State/Lake\", \"ServiceId\": \"40260\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=130\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Washington/Wells\", \"ServiceId\": \"40730\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=133\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Brown Line\", \"ServiceId\": \"Brn\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/brownline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"931b24ed-1bdd-4c85-beef-4e918818b1df\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/100000/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/100000/tag-walk/",
+                    "type": "Planned Work w/Part Closure"
+                  },
+                  {
+                    "active": true,
+                    "created": "2019-03-15T20:05:29.853291Z",
+                    "description": "Hide Harlem-bound Green Line service and Kimball-bound Brown Line service at Washington/Wabash",
+                    "end": "2020-03-18T20:05:00Z",
+                    "header": "Hide Harlem-bound Green Line service and Kimball-bound Brown Line service at Washington/Wabash",
+                    "id": 99999,
+                    "level": 2,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/99999/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 132,
+                        "label": "Pink Line",
+                        "route_code": "Pink",
+                        "tag_color": "E27EA6",
+                        "tag_label": "Pink Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2019-02-10T17:43:00Z",
+                    "status": "active",
+                    "ta_id": "55253",
+                    "ta_raw_data": "{\"AlertId\": \"55253\", \"Headline\": \"Hide Harlem-bound Green Line service and Kimball-bound Brown Line service at Washington/Wabash\", \"ShortDescription\": \"Hide Harlem-bound Green Line service and Kimball-bound Brown Line service at Washington/Wabash\", \"FullDescription\": {\"#cdata-section\": \"<p>Hide Harlem-bound Green Line service and Kimball-bound Brown Line service at Washington/Wabash because the whole outer loop platform is closed for polishing the canopy, without affecting Orange, Pink and southbound Green Line trains&#39; ability to be shown at the station</p>\\r\\n\"}, \"SeverityScore\": \"34\", \"SeverityColor\": \"06c\", \"SeverityCSS\": \"planned\", \"Impact\": \"Planned Work w/Part Closure\", \"EventStart\": \"2019-02-10T11:43:00\", \"EventEnd\": \"2020-03-18T15:05:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=55253\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Washington/Wabash\", \"ServiceId\": \"41700\", \"ServiceBackColor\": \"e27ea6\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=96\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Green Line\", \"ServiceId\": \"G\", \"ServiceBackColor\": \"009b3a\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/greenline/\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Brown Line\", \"ServiceId\": \"Brn\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/brownline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"3f59e76e-68b4-48f4-9f72-d64942a5b1bc\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/99999/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/99999/tag-walk/",
+                    "type": "Planned Work w/Part Closure"
+                  },
+                  {
+                    "active": true,
+                    "created": "2019-03-08T17:16:47.766171Z",
+                    "description": "short desc Test alert for clark/clake bubble",
+                    "end": "2019-03-22T18:31:00Z",
+                    "header": "Test alert for clark/clake bubble",
+                    "id": 99035,
+                    "level": 3,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/99035/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 131,
+                        "label": "Blue Line",
+                        "route_code": "Blue",
+                        "tag_color": "00A1DE",
+                        "tag_label": "Blue Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 132,
+                        "label": "Pink Line",
+                        "route_code": "Pink",
+                        "tag_color": "E27EA6",
+                        "tag_label": "Pink Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2019-03-07T19:31:00Z",
+                    "status": "active",
+                    "ta_id": "55256",
+                    "ta_raw_data": "{\"AlertId\": \"55256\", \"Headline\": \"Test alert for clark/clake bubble\", \"ShortDescription\": \"short desc Test alert for clark/clake bubble\", \"FullDescription\": {\"#cdata-section\": \"<p>long desc Test alert for clark/clake bubble</p>\\r\\n\"}, \"SeverityScore\": \"60\", \"SeverityColor\": \"B45F04\", \"SeverityCSS\": \"minor\", \"Impact\": \"Significant Delays\", \"EventStart\": \"2019-03-07T13:31:00\", \"EventEnd\": \"2019-03-22T13:31:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=55256\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Clark/Lake\", \"ServiceId\": \"40380\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=43\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Orange Line\", \"ServiceId\": \"Org\", \"ServiceBackColor\": \"f9461c\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/orangeline/\"}}]}, \"ttim\": \"0\", \"GUID\": \"9b9858d2-e7ec-4074-97f3-d0642f010346\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/99035/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/99035/tag-walk/",
+                    "type": "Significant Delays"
+                  },
+                  {
+                    "active": true,
+                    "created": "2019-02-21T17:39:11.625129Z",
+                    "description": "Brown & Purple Line Train Tracker data partly unavailable near downtown due to ongoing signal upgrade work; engineers working to restore info; srvc unaffected.",
+                    "end": null,
+                    "header": "Some CTA Train Tracker Info Partially Unavailable",
+                    "id": 95865,
+                    "level": 1,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/95865/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 128,
+                        "label": "Red Line",
+                        "route_code": "Red",
+                        "tag_color": "C60C30",
+                        "tag_label": "Red Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2018-11-12T06:00:00Z",
+                    "status": "active",
+                    "ta_id": "53847",
+                    "ta_raw_data": "{\"AlertId\": \"53847\", \"Headline\": \"Some CTA Train Tracker Info Partially Unavailable\", \"ShortDescription\": \"Brown & Purple Line Train Tracker data partly unavailable near downtown due to ongoing signal upgrade work; engineers working to restore info; srvc unaffected.\", \"FullDescription\": {\"#cdata-section\": \"<p>Estimated arrival times for Brown Line and Purple Line Express services in CTA Train Tracker may be partially/temporarily unavailable in areas near&nbsp;downtown, due to&nbsp;signal upgrade work being done in the area between Armitage and the Loop.</p>\\r\\n\\r\\n<p>We are aware of the issue and engineers have been working to restore data and resolve this issue as quickly as possible.&nbsp;Limited estimated arrival&nbsp;information for trains in this area&nbsp;may be unavailable&nbsp;at certain stations in and near the area.</p>\\r\\n\\r\\n<p>Service is unaffected; see alerts for Brown or Purple Line service to learn if trains are not operating as scheduled or otherwise normally.</p>\\r\\n\\r\\n<p>Your patience is appreciated.</p>\\r\\n\"}, \"SeverityScore\": \"12\", \"SeverityColor\": \"000000\", \"SeverityCSS\": \"special-note\", \"Impact\": \"Special note\", \"EventStart\": \"2018-11-12\", \"EventEnd\": null, \"TBD\": \"1\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=53847\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Armitage\", \"ServiceId\": \"40660\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=19\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Belmont\", \"ServiceId\": \"41320\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=25\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Chicago\", \"ServiceId\": \"40710\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=37\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Diversey\", \"ServiceId\": \"40530\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=53\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Fullerton\", \"ServiceId\": \"41220\", \"ServiceBackColor\": \"c60c30\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=59\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Merchandise Mart\", \"ServiceId\": \"40460\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=98\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Sedgwick\", \"ServiceId\": \"40800\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=124\"}}, {\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Wellington\", \"ServiceId\": \"41210\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=145\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Brown Line\", \"ServiceId\": \"Brn\", \"ServiceBackColor\": \"62361b\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/brownline/\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Purple Line Express\", \"ServiceId\": \"Pexp\", \"ServiceBackColor\": \"522398\", \"ServiceTextColor\": \"ffffff\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/purpleline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"fe77175b-db70-4ee7-8e59-08ba0661c0cb\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/95865/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/95865/tag-walk/",
+                    "type": "Special note"
+                  },
+                  {
+                    "active": true,
+                    "created": "2019-02-20T15:23:56.209141Z",
+                    "description": "Hide Blue Line results at Clark/Lake during a subway outage without shutting of all arrivals at Clark/Lake (i.e., on elevated platforms) ",
+                    "end": "2019-09-07T14:23:00Z",
+                    "header": "Hide Blue Line results at Clark/Lake during a subway outage",
+                    "id": 95538,
+                    "level": 2,
+                    "object_tag_url": "http://platform:8000/api/v1/alerts/95538/object-tags/",
+                    "organization": 1,
+                    "routes": [
+                      {
+                        "id": 131,
+                        "label": "Blue Line",
+                        "route_code": "Blue",
+                        "tag_color": "00A1DE",
+                        "tag_label": "Blue Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 135,
+                        "label": "Brown Line",
+                        "route_code": "Brn",
+                        "tag_color": "62361B",
+                        "tag_label": "Brown Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 133,
+                        "label": "Green Line",
+                        "route_code": "G",
+                        "tag_color": "009B3A",
+                        "tag_label": "Green Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 134,
+                        "label": "Orange Line",
+                        "route_code": "Org",
+                        "tag_color": "F9461C",
+                        "tag_label": "Orange Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 132,
+                        "label": "Pink Line",
+                        "route_code": "Pink",
+                        "tag_color": "E27EA6",
+                        "tag_label": "Pink Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      },
+                      {
+                        "id": 129,
+                        "label": "Purple Line",
+                        "route_code": "P",
+                        "tag_color": "522398",
+                        "tag_label": "Purple Line",
+                        "tag_text_color": "FFFFFF",
+                        "transit_mode": 1,
+                        "transit_mode_type": "SUBWAY"
+                      }
+                    ],
+                    "source": "CTA-Alerts",
+                    "start": "2019-02-20T15:23:00Z",
+                    "status": "active",
+                    "ta_id": "55252",
+                    "ta_raw_data": "{\"AlertId\": \"55252\", \"Headline\": \"Hide Blue Line results at Clark/Lake during a subway outage\", \"ShortDescription\": \"Hide Blue Line results at Clark/Lake during a subway outage without shutting of all arrivals at Clark/Lake (i.e., on elevated platforms) \", \"FullDescription\": {\"#cdata-section\": \"<p>Hide Blue Line results at Clark/Lake during a subway outage without shutting of all arrivals at Clark/Lake (i.e., on elevated platforms)&nbsp;</p>\\r\\n\"}, \"SeverityScore\": \"34\", \"SeverityColor\": \"06c\", \"SeverityCSS\": \"planned\", \"Impact\": \"Planned Work w/Part Closure\", \"EventStart\": \"2019-02-20T09:23:00\", \"EventEnd\": \"2019-09-07T09:23:00\", \"TBD\": \"0\", \"MajorAlert\": \"1\", \"AlertURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/alert_detail.aspx?AlertId=55252\"}, \"ImpactedService\": {\"Service\": [{\"ServiceType\": \"T\", \"ServiceTypeDescription\": \"Train Station\", \"ServiceName\": \"Clark/Lake\", \"ServiceId\": \"40380\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/travel_information/station.aspx?StopId=43\"}}, {\"ServiceType\": \"R\", \"ServiceTypeDescription\": \"Train Route\", \"ServiceName\": \"Blue Line\", \"ServiceId\": \"Blue\", \"ServiceBackColor\": \"00a1de\", \"ServiceTextColor\": \"FFFFFF\", \"ServiceURL\": {\"#cdata-section\": \"http://transitchicago-2016-design.idevdesign.net/blueline/\"}}]}, \"ttim\": \"1\", \"GUID\": \"38c403c3-daab-462c-aa71-b39f1878678c\"}",
+                    "tag_walk_expand_url": "http://platform:8000/api/v1/alerts-expand/95538/",
+                    "tag_walk_url": "http://platform:8000/api/v1/alerts/95538/tag-walk/",
+                    "type": "Planned Work w/Part Closure"
+                  }
+                ],
+                "130": []
+              }
+            }
+          }
+        },
+        "description": "This endpoint is valuable to clients who want to know alert<>route groupings.",
+        "summary": "List alerts by route...for all routes!",
+        "parameters": [
+          {
+            "$ref": "#/parameters/org_short_key"
+          },
+          {
+            "$ref": "#/parameters/mode_id"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "org_short_key",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mode_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/station-context/{org_short_key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "accessibility": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "string"
+                  },
+                  "longitude": {
+                    "type": "string"
+                  },
+                  "organization": {
+                    "type": "integer"
+                  },
+                  "routes": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "route_code": {
+                          "type": "string"
+                        },
+                        "tag_color": {
+                          "type": "string"
+                        },
+                        "tag_label": {
+                          "type": "string"
+                        },
+                        "tag_text_color": {
+                          "type": "string"
+                        },
+                        "transit_mode": {
+                          "type": "integer"
+                        },
+                        "transit_mode_type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "stop_code": {
+                    "type": "string"
+                  },
+                  "stops": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "accessibility": {
+                          "type": "boolean"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "latitude": {
+                          "type": "string"
+                        },
+                        "longitude": {
+                          "type": "string"
+                        },
+                        "organization": {
+                          "type": "integer"
+                        },
+                        "stop_code": {
+                          "type": "string"
+                        },
+                        "tag_color": {
+                          "type": "string"
+                        },
+                        "tag_label": {
+                          "type": "string"
+                        },
+                        "tag_text_color": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "tag_color": {
+                    "type": "string"
+                  },
+                  "tag_label": {
+                    "type": "string"
+                  },
+                  "tag_text_color": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "accessibility": true,
+                  "id": 77,
+                  "label": "18th",
+                  "latitude": "41.857908",
+                  "longitude": "-87.669147",
+                  "organization": 1,
+                  "routes": [
+                    {
+                      "id": 132,
+                      "label": "Pink Line",
+                      "route_code": "Pink",
+                      "tag_color": "E27EA6",
+                      "tag_label": "Pink Line",
+                      "tag_text_color": "FFFFFF",
+                      "transit_mode": 1,
+                      "transit_mode_type": "SUBWAY"
+                    }
+                  ],
+                  "stop_code": "40830",
+                  "stops": [
+                    {
+                      "accessibility": true,
+                      "id": 11109,
+                      "label": "18th (30161)",
+                      "latitude": "41.857908",
+                      "longitude": "-87.669147",
+                      "organization": 1,
+                      "stop_code": "30161",
+                      "tag_color": "#ccc",
+                      "tag_label": "18th - 30161",
+                      "tag_text_color": "#000"
+                    },
+                    {
+                      "accessibility": true,
+                      "id": 11110,
+                      "label": "18th (30162)",
+                      "latitude": "41.857908",
+                      "longitude": "-87.669147",
+                      "organization": 1,
+                      "stop_code": "30162",
+                      "tag_color": "#ccc",
+                      "tag_label": "18th - 30162",
+                      "tag_text_color": "#000"
+                    }
+                  ],
+                  "tag_color": "#ccc",
+                  "tag_label": "18th",
+                  "tag_text_color": "#000"
+                }
+              ]
+            }
+          }
+        },
+        "summary": "List of routes per station",
+        "description": "This endpoint is used by clients to get an understanding of a transit system: what stations are in the system and what routes pass through each station.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/org_short_key"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "org_short_key",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/service-status/org/{org_short_key}/mode/{mode_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "route_id": {
+                    "type": "integer"
+                  },
+                  "route_label": {
+                    "type": "string"
+                  },
+                  "route_code": {
+                    "type": "string"
+                  },
+                  "route_status": {
+                    "type": "string"
+                  },
+                  "transit_mode": {
+                    "type": "integer"
+                  },
+                  "transit_mode_type": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "route_id": 573,
+                  "route_label": "Metro Blue Line (801)",
+                  "route_code": "801",
+                  "route_status": "Service Alert",
+                  "transit_mode": 12,
+                  "transit_mode_type": "RAIL"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/org_short_key"
+          },
+          {
+            "$ref": "#/parameters/mode_id"
+          }
+        ],
+        "description": "Returns the service status by line given an organization and transit mode. "
+      },
+      "parameters": [
+        {
+          "name": "org_short_key",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "mode_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "/ixntouch/transit-modes/{org_short_key}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "mode_type": {
+                    "type": "string"
+                  },
+                  "namespace_key": {
+                    "type": "null"
+                  },
+                  "organization": {
+                    "type": "integer"
+                  },
+                  "tag_color": {
+                    "type": "string"
+                  },
+                  "tag_label": {
+                    "type": "string"
+                  },
+                  "tag_text_color": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "id": 2,
+                  "label": "BUS",
+                  "mode_type": "BUS",
+                  "namespace_key": null,
+                  "organization": 1,
+                  "tag_color": "Blue",
+                  "tag_label": "BUS",
+                  "tag_text_color": "#fff"
+                },
+                {
+                  "id": 1,
+                  "label": "SUBWAY",
+                  "mode_type": "SUBWAY",
+                  "namespace_key": null,
+                  "organization": 1,
+                  "tag_color": "Red",
+                  "tag_label": "SUBWAY",
+                  "tag_text_color": "#000"
+                }
+              ]
+            }
+          },
+          "404": {
+            "$ref": "#/responses/Not Found"
+          }
+        },
+        "summary": "Returns a list of transit modes for a given organization.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/org_short_key"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "org_short_key",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "display_id": {
+      "name": "display_id",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "description": "The external_id of a display. This is the Broadsign ID of a display."
+    },
+    "org_short_key": {
+      "name": "org_short_key",
+      "in": "path",
+      "type": "string",
+      "description": "A short key for an IxNConnect organization. These are guaranteed to be unique.",
+      "required": true
+    },
+    "mode_id": {
+      "name": "mode_id",
+      "in": "path",
+      "type": "integer",
+      "required": true,
+      "description": "The id for a transit mode in IxNConnect."
+    },
+    "route_id": {
+      "name": "route_id",
+      "in": "path",
+      "type": "integer",
+      "required": true,
+      "description": "The id for a transit route in IxNConnect."
+    },
+    "frame_id": {
+      "name": "frame_id",
+      "in": "path",
+      "type": "string",
+      "required": true
+    }
+  },
+  "definitions": {
+    "Display": {
+      "type": "object",
+      "properties": {
+        "display": {
+          "type": "object",
+          "properties": {
+            "active": {
+              "type": "boolean"
+            },
+            "address": {
+              "type": "string"
+            },
+            "aspect_ratio_x": {
+              "type": "integer"
+            },
+            "aspect_ratio_y": {
+              "type": "integer"
+            },
+            "display_format": {
+              "type": "integer"
+            },
+            "display_format_detail": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "organization": {
+                  "type": "integer"
+                }
+              }
+            },
+            "display_health_detail": {
+              "type": "null"
+            },
+            "distance_of_interest": {
+              "type": "string"
+            },
+            "external_id": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "installation_date": {
+              "type": "string"
+            },
+            "interactive": {
+              "type": "boolean"
+            },
+            "intercardinal_direction": {
+              "type": "string"
+            },
+            "ixn_internal_id": {
+              "type": "string"
+            },
+            "ixn_screen_type": {
+              "type": "integer"
+            },
+            "ixn_screen_type_detail": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "object_tag_url": {
+              "type": "string"
+            },
+            "organization": {
+              "type": "integer"
+            },
+            "organization_details": {
+              "type": "object",
+              "properties": {
+                "default_content": {
+                  "type": "integer"
+                },
+                "default_content_detail": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "content_category": {
+                      "type": "integer"
+                    },
+                    "content_category_detail": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "organization": {
+                          "type": "integer"
+                        },
+                        "target_percentage": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "content_type": {
+                      "type": "string"
+                    },
+                    "end_broadcast": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object_tag_url": {
+                      "type": "string"
+                    },
+                    "organization": {
+                      "type": "integer"
+                    },
+                    "play_weight": {
+                      "type": "integer"
+                    },
+                    "start_broadcast": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "tag_walk_expand_url": {
+                      "type": "string"
+                    },
+                    "tag_walk_url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "default_template": {
+                  "type": "string"
+                },
+                "default_template_upload": {
+                  "type": "null"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "logo": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "organization_type": {
+                  "type": "string"
+                },
+                "short_key": {
+                  "type": "string"
+                },
+                "short_name": {
+                  "type": "string"
+                },
+                "timezone": {
+                  "type": "string"
+                }
+              }
+            },
+            "orientation": {
+              "type": "string"
+            },
+            "resolution_x": {
+              "type": "integer"
+            },
+            "resolution_y": {
+              "type": "integer"
+            },
+            "screen_type": {
+              "type": "string"
+            },
+            "ta_id": {
+              "type": "string"
+            },
+            "tag_walk_expand_url": {
+              "type": "string"
+            },
+            "tag_walk_url": {
+              "type": "string"
+            },
+            "targeting_details": {
+              "type": "object",
+              "properties": {
+                "routes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "route_code": {
+                        "type": "string"
+                      },
+                      "tag_color": {
+                        "type": "string"
+                      },
+                      "tag_label": {
+                        "type": "string"
+                      },
+                      "tag_text_color": {
+                        "type": "string"
+                      },
+                      "transit_mode": {
+                        "type": "integer"
+                      },
+                      "transit_mode_type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "stops": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "accessibility": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "latitude": {
+                        "type": "string"
+                      },
+                      "longitude": {
+                        "type": "string"
+                      },
+                      "organization": {
+                        "type": "integer"
+                      },
+                      "stop_code": {
+                        "type": "string"
+                      },
+                      "tag_color": {
+                        "type": "string"
+                      },
+                      "tag_label": {
+                        "type": "string"
+                      },
+                      "tag_text_color": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "zip_code": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Alert": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "created": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "object_tag_url": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "integer"
+        },
+        "source": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "ta_id": {
+          "type": "string"
+        },
+        "ta_raw_data": {
+          "type": "string"
+        },
+        "tag_walk_expand_url": {
+          "type": "string"
+        },
+        "tag_walk_url": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "description": "An IxNConnect service alert. Are trains delayed? Buses rerouted? Elevators out? This will tell you."
+    },
+    "CTA Arrival": {
+      "type": "object",
+      "properties": {
+        "ixn_background_color": {
+          "type": "string"
+        },
+        "ixn_custom_data": {
+          "type": "object",
+          "properties": {
+            "flags": {
+              "type": "null"
+            },
+            "isSch": {
+              "type": "string"
+            },
+            "rn": {
+              "type": "string"
+            }
+          }
+        },
+        "ixn_destination_name": {
+          "type": "string"
+        },
+        "ixn_index": {
+          "type": "integer"
+        },
+        "ixn_line": {
+          "type": "string"
+        },
+        "ixn_route_status": {
+          "type": "string"
+        },
+        "ixn_status": {
+          "type": "string"
+        },
+        "ixn_status_extra_info": {
+          "type": "string"
+        },
+        "ixn_status_message": {
+          "type": "string"
+        },
+        "ixn_stop_id": {
+          "type": "string"
+        },
+        "ixn_text_color": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [],
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "responses": {
+    "Not Found": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

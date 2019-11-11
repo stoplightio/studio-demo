@@ -32,9 +32,37 @@ Below is a quick reference of all the Markdown syntax that is supported by Stopl
 
 ## Headers
 
-# H1
+# H1 Request Maker
+```json http
+{
+    "request": {
+        "method": "get",
+        "url": "https://next-api.stoplight.io/projects/45",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "query": {
+            "page": 2
+        }
+    }
+}
+```
 
 ## H2
+```json http
+{
+    "request": {
+        "method": "get",
+        "url": "https://next-api.stoplight.io/projects/45",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "query": {
+            "page": 2
+        }
+    }
+}
+```
 
 ### H3
 

@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: myspec
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /foo:
+    get:
+      summary: get foo
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/mymodel.v1.yaml
+components:
+  schemas: {}

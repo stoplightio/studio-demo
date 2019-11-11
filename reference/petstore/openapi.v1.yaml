@@ -58,6 +58,16 @@ paths:
               schema:
                 $ref: ../common/models/error.v1.yaml
       description: Create a pet
+    put:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'http://localhost:8080/api/nodes.raw?srn=gh/stoplightio/sample-specs/reference/giphy/giphy.yaml/definitions/User&mid=15'
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
