@@ -11,7 +11,7 @@ rules:
     given: $.info
     then:
       function: abc
-    severity: hint
+    severity: error
   info-matches-stoplight:
     description: This is an example rule
     message: Info must contain Stoplight
