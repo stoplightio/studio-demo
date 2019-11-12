@@ -1,19 +1,17 @@
 formats:
   - oas2
   - oas3
-
 extends:
   - 'spectral:oas'
-
-functions: [abc]
-
+functions:
+  - abc
 rules:
   my-rule:
-    message: "{{error}}"
-    given: "$.info"
+    message: '{{error}}'
+    given: $.info
     then:
-      function: "abc"
-
+      function: abc
+    severity: hint
   info-matches-stoplight:
     description: This is an example rule
     message: Info must contain Stoplight
