@@ -1,7 +1,9 @@
-functions: [abc]
-rules:
-  my-rule:
-    message: "{{error}}"
-    given: "$.info"
-    then:
-      function: "abc"  
+module.exports = (targetVal) => {
+  if (targetVal !== 'abc') {
+    return [
+      {
+        message: 'Value must equal "abc".',
+      },
+    ];
+  }
+};  
