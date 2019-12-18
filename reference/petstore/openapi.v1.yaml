@@ -4,6 +4,7 @@ info:
   title: Swagger Petstore
   license:
     name: MIT
+  description: aa
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
@@ -88,4 +89,4 @@ components:
       x-tags:
         - Pets
       items:
-        $ref: ./models/pet.v1.yaml      
+        $ref: ./models/pet.v1.yaml
