@@ -1,6 +1,6 @@
 title: Category
 type: object
-description: ''
+description: master
 properties:
   name:
     type: string
