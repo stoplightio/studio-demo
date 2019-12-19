@@ -84,7 +84,7 @@ components:
   schemas:
     Pets:
       title: Pets
-      description: A list of pets.
+      description: master
       type: array
       x-tags:
         - Pets
