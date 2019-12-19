@@ -1,6 +1,6 @@
 title: Error
 type: object
-description: master
+description: 'master '
 x-tags:
   - Common
 properties:
