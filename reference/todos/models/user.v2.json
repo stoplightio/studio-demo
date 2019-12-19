@@ -1,0 +1,27 @@
+{
+  "title": "User",
+  "type": "object",
+  "description": "master",
+  "x-tags": [
+    "Todos"
+  ],
+  "properties": {
+    "age": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 150
+    },
+    "first-name": {
+      "type": "string",
+      "description": "The user's full name."
+    },
+    "last-name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "age",
+    "first-name",
+    "last-name"
+  ]
+}
