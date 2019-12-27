@@ -8,6 +8,7 @@ info:
   contact:
     email: dr@stoplight.io
     url: 'https://www.stoplight.io'
+    name: David Roberts
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
