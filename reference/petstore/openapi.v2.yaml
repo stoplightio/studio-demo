@@ -7,6 +7,7 @@ info:
   description: aa
   contact:
     email: dr@stoplight.io
+    url: 'https://www.stoplight.io'
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
