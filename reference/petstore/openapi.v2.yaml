@@ -5,6 +5,8 @@ info:
   license:
     name: MIT
   description: aa
+  contact:
+    email: dr@stoplight.io
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
