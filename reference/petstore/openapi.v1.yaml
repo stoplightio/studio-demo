@@ -54,6 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+      description: kkk
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
