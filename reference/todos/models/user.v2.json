@@ -1,7 +1,7 @@
 {
   "title": "User",
   "type": "object",
-  "description": "master",
+  "description": "Updated description",
   "x-tags": [
     "Todos"
   ],
