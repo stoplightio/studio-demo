@@ -17,6 +17,9 @@
     },
     "last-name": {
       "type": "string"
+    },
+    "email": {
+      "type": "string"
     }
   },
   "required": [
