@@ -26,6 +26,11 @@
       "type": [
         "string",
         "number"
+      ],
+      "enum": [
+        "a",
+        "b",
+        "c"
       ]
     }
   },
