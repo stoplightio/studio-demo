@@ -31,7 +31,9 @@
         "a",
         "b",
         "c"
-      ]
+      ],
+      "example": "a",
+      "pattern": "^[A-Z]+"
     }
   },
   "required": [
