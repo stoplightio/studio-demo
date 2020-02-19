@@ -24,16 +24,6 @@
     },
     "foo": {
       "type": "string"
-    },
-    "bar": {
-      "type": "string",
-      "enum": [
-        "a",
-        "b",
-        "c"
-      ],
-      "example": "a",
-      "pattern": "^[A-Z]+"
     }
   },
   "required": [
