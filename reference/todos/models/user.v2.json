@@ -1,5 +1,5 @@
 {
-  "title": "User",
+  "title": "user",
   "type": "object",
   "description": "Updated description",
   "x-tags": [
