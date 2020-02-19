@@ -21,6 +21,12 @@
     "email": {
       "type": "string",
       "format": "email"
+    },
+    "foo": {
+      "type": "string"
+    },
+    "bar": {
+      "type": "string"
     }
   },
   "required": [
