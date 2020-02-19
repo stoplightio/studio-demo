@@ -23,7 +23,10 @@
       "format": "email"
     },
     "foo": {
-      "type": "string"
+      "type": [
+        "string",
+        "number"
+      ]
     }
   },
   "required": [
