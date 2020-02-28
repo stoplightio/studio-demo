@@ -81,13 +81,6 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
-  /foo:
-    get:
-      summary: get foo
-      tags: []
-      responses: {}
-      operationId: get-foo
-      description: 'foo bar  '
   /bar:
     get:
       summary: get foo
@@ -99,6 +92,13 @@ paths:
       tags: []
       responses: {}
       operationId: post-bar
+  /foo:
+    get:
+      summary: get foo
+      tags: []
+      responses: {}
+      operationId: get-foo
+      description: Change to master
 components:
   schemas:
     Pets:
