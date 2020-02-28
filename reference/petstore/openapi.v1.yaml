@@ -81,6 +81,24 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+  /foo:
+    get:
+      summary: get foo
+      tags: []
+      responses: {}
+      operationId: get-foo
+      description: 'foo bar  '
+  /bar:
+    get:
+      summary: get foo
+      tags: []
+      responses: {}
+      operationId: get-bar
+    post:
+      summary: post bar
+      tags: []
+      responses: {}
+      operationId: post-bar
 components:
   schemas:
     Pets:
