@@ -2,6 +2,10 @@
 title: UI Overview.
 tags: [00. Welcome]
 ---
+_dddd_
+*dddd*
+**dddd*
+<p style="text-align: center;">Centered text</p>
 
 # UI Overview
 
