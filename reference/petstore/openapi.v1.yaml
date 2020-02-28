@@ -98,7 +98,7 @@ paths:
       tags: []
       responses: {}
       operationId: get-foo
-      description: Change to master
+      description: "Change I don't want in feature"
 components:
   schemas:
     Pets:
