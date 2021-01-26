@@ -4,6 +4,7 @@ info:
   title: Swagger Petstore
   license:
     name: MIT
+  description: 'simple change feat1  '
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
@@ -43,6 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+      description: change
     post:
       summary: Create a pet
       operationId: createPets
