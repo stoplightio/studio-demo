@@ -1,10 +1,14 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
+  version: 2.0.0
   title: Swagger Petstore
   license:
     name: MIT
   description: aa
+  contact:
+    email: dr@stoplight.io
+    url: 'https://www.stoplight.io'
+    name: David Roberts
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
@@ -22,10 +26,6 @@ paths:
           schema:
             type: integer
             format: int32
-        - schema:
-            type: string
-          in: query
-          name: offset
       responses:
         '200':
           description: A paged array of pets
@@ -58,7 +58,6 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
-      description: kkk
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
@@ -85,24 +84,6 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
-  /bar:
-    get:
-      summary: get foo
-      tags: []
-      responses: {}
-      operationId: get-bar
-    post:
-      summary: post bar
-      tags: []
-      responses: {}
-      operationId: post-bar
-  /foo:
-    get:
-      summary: get foo
-      tags: []
-      responses: {}
-      operationId: get-foo
-      description: Change to master
 components:
   schemas:
     Pets:

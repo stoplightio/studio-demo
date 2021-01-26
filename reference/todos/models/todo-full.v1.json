@@ -2,7 +2,26 @@
   "title": "Todo Full",
   "allOf": [
     {
-      "$ref": "./todo-partial.v1.json"
+      "title": "Todo Partial",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "completed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "completed"
+      ],
+      "x-tags": [
+        "Todos"
+      ]
     },
     {
       "type": "object",
@@ -28,7 +47,26 @@
           "format": "date-time"
         },
         "user": {
-          "$ref": "./user.v1.json"
+          "title": "User",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The user's full name."
+            },
+            "age": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 150
+            }
+          },
+          "required": [
+            "name",
+            "age"
+          ],
+          "x-tags": [
+            "Todos"
+          ]
         }
       },
       "required": [
@@ -39,5 +77,6 @@
   ],
   "x-tags": [
     "Todos"
-  ]
+  ],
+  "description": "Used by List Todo operations."
 }

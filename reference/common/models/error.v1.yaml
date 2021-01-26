@@ -1,6 +1,6 @@
 title: Error
 type: object
-description: A standard error object.
+description: 'master. '
 x-tags:
   - Common
 properties:

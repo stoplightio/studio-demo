@@ -1,5 +1,5 @@
 title: Pet
-description: A single pet.
+description: Pet PROD
 type: object
 x-tags:
   - Pets
@@ -24,7 +24,7 @@ properties:
       - pending
       - sold
   category:
-    $ref: ./category.v1.yaml  
+    $ref: ./category.v1.yaml
 required:
   - name
   - photoUrls
