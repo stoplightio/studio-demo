@@ -157,10 +157,7 @@ paths:
 components:
   schemas:
     Todos:
-      description: |
-        This is the todo model
-
-        *Markdown is supported in descriptions. Add information here for users to get accustomed to resources*
+      description: This is the todo model
       type: object
       properties:
         id:
