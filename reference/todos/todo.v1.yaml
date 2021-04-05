@@ -166,6 +166,8 @@ components:
           readOnly: true
         name:
           type: string
+          minLength: 1
+          maxLength: 100
         completed:
           type: boolean
           default: false
@@ -175,12 +177,10 @@ components:
           readOnly: true
         created_at:
           type: string
-          minLength: 1
           format: date-time
           readOnly: true
         updated_at:
           type: string
-          minLength: 1
           format: date-time
           readOnly: true
       required:
