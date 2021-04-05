@@ -22,7 +22,7 @@ paths:
       summary: List Todos
       responses:
         '200':
-          description: OK
+          description: Returns a list of Todos
           content:
             application/json:
               schema:
@@ -48,7 +48,7 @@ paths:
       operationId: post-todos
       responses:
         '201':
-          description: Created
+          description: New Todo Created
           content:
             multipart/form-data:
               schema:
@@ -82,7 +82,7 @@ paths:
       summary: Get Todo
       responses:
         '200':
-          description: OK
+          description: Returns the Todo for the ID
           content:
             application/json:
               schema:
@@ -104,7 +104,7 @@ paths:
       operationId: put-todos-id
       responses:
         '200':
-          description: OK
+          description: Todo Updated
         '403':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -114,6 +114,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Todos'
+        description: ''
       description: |-
         Update a single todo using an ID
 
@@ -123,7 +124,7 @@ paths:
       operationId: delete-todos-id
       responses:
         '200':
-          description: OK
+          description: Todo Deleted
           content:
             application/json:
               schema:
@@ -144,7 +145,7 @@ paths:
       operationId: patch-todos-id
       responses:
         '200':
-          description: OK
+          description: Todo Updated
         '403':
           $ref: '#/components/responses/Unauthorized'
         '404':
