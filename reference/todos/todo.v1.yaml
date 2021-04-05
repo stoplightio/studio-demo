@@ -73,11 +73,7 @@ paths:
       parameters: []
   '/todos/{id}':
     parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
+      - $ref: '#/components/parameters/ID'
     get:
       summary: Get Todo
       responses:
@@ -158,20 +154,23 @@ paths:
 components:
   schemas:
     Todos:
-      description: This is the todo model
+      description: I'm a model's description.
       type: object
+      x-examples: {}
+      title: Todo
       properties:
         id:
           type: number
+          minimum: 0
+          maximum: 9999
           readOnly: true
         name:
           type: string
-          minLength: 1
         completed:
           type: boolean
+          default: false
         completed_at:
           type: string
-          minLength: 1
           format: date-time
           readOnly: true
         created_at:
@@ -191,8 +190,6 @@ components:
         - completed_at
         - created_at
         - updated_at
-      x-examples: {}
-      title: Todo
   securitySchemes:
     API Key:
       name: apiKey
@@ -214,6 +211,13 @@ components:
       schema:
         type: string
       description: application/json
+    ID:
+      name: ID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: ID of the Todo
   responses:
     NotFound:
       description: Resource not found
