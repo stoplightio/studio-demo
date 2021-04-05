@@ -1,0 +1,282 @@
+openapi: 3.0.0
+info:
+  title: To-dos
+  version: 1.0.0
+  description: "![](https://i.ibb.co/H7hk4bh/todo-api-background.png)\n\n## \U0001F4AB Overview\n\nTo Do API provides a simple way for people to manage their tasks and plan their day. This API can be used to create mobile and web applications.This API is documented using **OpenAPI 3.0**. The implementation lives in this [GitHub repo](https://github.com/marbemac/stoplight-todos).\n\n### \U0001F9F0 Cross-Origin Resource Sharing\nThis API features Cross-Origin Resource Sharing (CORS) implemented in compliance with  [W3C spec](https://www.w3.org/TR/cors/). CORS support is necessary to make calls from the request maker within the API docs.\n\n### \U0001F3C1 Trying out your own API Specification\nElements can be used to generate API docs for any OpenAPI document. Replace this OpenAPI with a URL to your own OpenAPI document to get started. "
+  contact:
+    name: Stoplight Support
+    email: support@stoplight.io
+    url: 'https://www.stoplight.io'
+  license:
+    name: MIT
+    url: 'https://spdx.org/licenses/MIT'
+  termsOfService: 'https://docs.github.com/articles/github-terms-of-service'
+servers:
+  - url: 'https://todos.stoplight.io'
+    description: Production
+  - description: Sandbox
+    url: 'https://todos-sandbox.stoplight.io'
+paths:
+  /todos:
+    get:
+      summary: List Todos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todos'
+              examples:
+                List of Todos:
+                  $ref: '#/components/examples/multiple-todos'
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      operationId: get-todos
+      description: |-
+        Returns a list of todos
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      parameters:
+        - $ref: '#/components/parameters/limit'
+    post:
+      summary: Create Todo
+      operationId: post-todos
+      responses:
+        '201':
+          description: Created
+          content:
+            multipart/form-data:
+              schema:
+                $ref: '#/components/schemas/Todos'
+              examples:
+                Example Todo:
+                  $ref: '#/components/examples/todo'
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      description: |-
+        This creates a Todo object
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
+        description: Name of the Todo
+      parameters: []
+  '/todos/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get Todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+              examples:
+                Example Todo:
+                  $ref: '#/components/examples/todo'
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      operationId: get-todos-id
+      description: |-
+        Get a single todo using an ID
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+    put:
+      summary: Update Todo
+      operationId: put-todos-id
+      responses:
+        '200':
+          description: OK
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
+      description: |-
+        Update a single todo using an ID
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+    delete:
+      summary: Delete Todo
+      operationId: delete-todos-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todos'
+              examples:
+                Example Todo:
+                  $ref: '#/components/examples/todo'
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      description: |-
+        Delete a todo using an ID
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+    patch:
+      summary: Update Todo
+      operationId: patch-todos-id
+      responses:
+        '200':
+          description: OK
+        '403':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      deprecated: true
+      description: |-
+        Don't use this endpoint. Notice it's deprecated.
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+components:
+  schemas:
+    Todos:
+      description: |
+        This is the todo model
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to resources*
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        name:
+          type: string
+          minLength: 1
+        completed:
+          type: boolean
+        completed_at:
+          type: string
+          minLength: 1
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          minLength: 1
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          minLength: 1
+          format: date-time
+          readOnly: true
+      required:
+        - id
+        - name
+        - completed
+        - completed_at
+        - created_at
+        - updated_at
+      x-examples: {}
+      title: Todo
+  securitySchemes:
+    API Key:
+      name: apiKey
+      type: apiKey
+      in: query
+      description: 'Get your API Key at https://www.stoplight.io or just use `123`. It''s super secure ;)'
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: number
+      description: Return a limited set of results *I'm a shared parameter. I can be reused in multiple endpoints!*
+    contentType:
+      name: Content-Type
+      in: header
+      required: false
+      schema:
+        type: string
+      description: application/json
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            title: Error
+            type: object
+            description: A standard error object.
+            x-tags:
+              - Common
+            properties:
+              status:
+                type: string
+                description: A code.
+              error:
+                type: string
+            required:
+              - status
+              - error
+    Unauthorized:
+      description: Action not allowed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            required:
+              - message
+  examples:
+    todo:
+      value:
+        id: 0
+        name: string
+        completed: true
+        completed_at: '2019-08-24T14:15:22Z'
+        created_at: '2019-08-24T14:15:22Z'
+        updated_at: '2019-08-24T14:15:22Z'
+    multiple-todos:
+      value:
+        - id: 0
+          name: my todo
+          completed: true
+          completed_at: '2019-08-24T14:15:22Z'
+          created_at: '2019-08-24T14:15:22Z'
+          updated_at: '2019-08-24T14:15:22Z'
+        - id: 1
+          name: another todo
+          completed: false
+          completed_at: '2019-08-24T14:15:22Z'
+          created_at: '2019-08-24T14:15:22Z'
+          updated_at: '2019-08-24T14:15:22Z'
+        - id: 2
+          name: yet another todo
+          completed: false
+          completed_at: '2019-08-24T14:15:22Z'
+          created_at: '2019-08-24T14:15:22Z'
+          updated_at: '2019-08-24T14:15:22Z'
+security:
+  - API Key: []
+tags:
+  - name: Todos
