@@ -96,7 +96,7 @@ paths:
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
     put:
-      summary: Update Todo
+      summary: Replace Todo
       operationId: put-todos-id
       responses:
         '200':
@@ -151,6 +151,72 @@ paths:
         Don't use this endpoint. Notice it's deprecated.
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+  /users:
+    get:
+      summary: Get User
+      tags:
+        - Users
+      responses: {}
+      operationId: get-users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples:
+              Example User:
+                $ref: '#/components/examples/user'
+        description: ''
+      description: |-
+        Get a user by ID
+
+        *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+    parameters: []
+    delete:
+      summary: Delete User
+      operationId: delete-users-userID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      description: Delete a user by ID
+      tags:
+        - Users
+    post:
+      summary: Create User
+      operationId: post-users-userID
+      responses:
+        '201':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Example User:
+                  $ref: '#/components/examples/user'
+        '':
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Example User:
+                  $ref: '#/components/examples/user'
+          description: ''
+      description: Create a User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples: {}
+      tags:
+        - Users
 components:
   schemas:
     Todos:
@@ -163,25 +229,31 @@ components:
           type: number
           minimum: 0
           maximum: 9999
+          description: ID of the task
           readOnly: true
         name:
           type: string
           minLength: 1
           maxLength: 100
+          description: Name of the task
         completed:
           type: boolean
           default: false
+          description: Boolean indicating if the task has been completed or not
         completed_at:
           type: string
           format: date-time
+          description: Time when the task was completed
           readOnly: true
         created_at:
           type: string
           format: date-time
+          description: Time when the task was created
           readOnly: true
         updated_at:
           type: string
           format: date-time
+          description: Time when the task was updated
           readOnly: true
       required:
         - id
@@ -190,6 +262,37 @@ components:
         - completed_at
         - created_at
         - updated_at
+    User:
+      description: ''
+      type: object
+      title: User
+      properties:
+        userId:
+          type: number
+          description: ID of the user
+          readOnly: true
+        firstName:
+          type: string
+          minLength: 1
+          description: ''
+        lastName:
+          type: string
+          minLength: 1
+          description: ''
+        phoneNumber:
+          type: string
+          minLength: 1
+          description: Official Phone Number
+        emailAddress:
+          type: string
+          minLength: 1
+          description: Work Email Address
+      required:
+        - userId
+        - firstName
+        - lastName
+        - phoneNumber
+        - emailAddress
   securitySchemes:
     API Key:
       name: apiKey
@@ -278,6 +381,13 @@ components:
           completed_at: '2019-08-24T14:15:22Z'
           created_at: '2019-08-24T14:15:22Z'
           updated_at: '2019-08-24T14:15:22Z'
+    user:
+      value:
+        userId: 2
+        firstName: racks
+        lastName: jacson
+        phoneNumber: '123456'
+        emailAddress: racks.jacson@learningcontainer.com
 security:
   - API Key: []
 tags:
