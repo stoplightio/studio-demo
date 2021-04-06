@@ -43,6 +43,7 @@ paths:
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
       parameters:
         - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/contentType'
     post:
       summary: Create Todo
       operationId: post-todos
@@ -70,7 +71,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Todos'
         description: Name of the Todo
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/contentType'
   '/todos/{id}':
     parameters:
       - $ref: '#/components/parameters/ID'
@@ -95,6 +97,7 @@ paths:
         Get a single todo using an ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      parameters: []
     put:
       summary: Replace Todo
       operationId: put-todos-id
@@ -115,6 +118,8 @@ paths:
         Update a single todo using an ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      parameters:
+        - $ref: '#/components/parameters/contentType'
     delete:
       summary: Delete Todo
       operationId: delete-todos-id
@@ -151,6 +156,11 @@ paths:
         Don't use this endpoint. Notice it's deprecated.
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todos'
   /users:
     get:
       summary: Get User
@@ -171,6 +181,8 @@ paths:
         Get a user by ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      parameters:
+        - $ref: '#/components/parameters/contentType'
     parameters: []
     delete:
       summary: Delete User
@@ -217,6 +229,8 @@ paths:
             examples: {}
       tags:
         - Users
+      parameters:
+        - $ref: '#/components/parameters/contentType'
 components:
   schemas:
     Todos:
@@ -258,7 +272,6 @@ components:
       required:
         - id
         - name
-        - completed
         - completed_at
         - created_at
         - updated_at
@@ -295,7 +308,7 @@ components:
         - emailAddress
   securitySchemes:
     API Key:
-      name: apiKey
+      name: apikey
       type: apiKey
       in: query
       description: 'Get your API Key at https://www.stoplight.io or just use `123`. It''s super secure ;)'
@@ -310,9 +323,10 @@ components:
     contentType:
       name: Content-Type
       in: header
-      required: false
+      required: true
       schema:
         type: string
+        default: application/json
       description: application/json
     ID:
       name: ID
