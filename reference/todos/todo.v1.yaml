@@ -74,6 +74,8 @@ paths:
         description: Name of the Todo
       parameters:
         - $ref: '#/components/parameters/contentType'
+      security:
+        - API Key: []
   '/todos/{id}':
     get:
       summary: Get Todo
@@ -120,6 +122,8 @@ paths:
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
       parameters:
         - $ref: '#/components/parameters/contentType'
+      security:
+        - API Key: []
     delete:
       summary: Delete Todo
       operationId: delete-todos-id
@@ -141,6 +145,8 @@ paths:
         Delete a todo using an ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
+      security:
+        - API Key: []
     patch:
       summary: Update Todo
       operationId: patch-todos-id
@@ -161,6 +167,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Todos'
+      security:
+        - API Key: []
     parameters:
       - $ref: '#/components/parameters/ID'
   /users:
@@ -201,6 +209,8 @@ paths:
       description: Delete a user by ID
       tags:
         - Users
+      security:
+        - API Key: []
     post:
       summary: Create User
       operationId: post-users-userID
@@ -225,6 +235,8 @@ paths:
         - Users
       parameters:
         - $ref: '#/components/parameters/contentType'
+      security:
+        - API Key: []
 components:
   schemas:
     Todos:
@@ -396,7 +408,5 @@ components:
         lastName: jacson
         phoneNumber: '123456'
         emailAddress: racks.jacson@learningcontainer.com
-security:
-  - API Key: []
 tags:
   - name: Todos
