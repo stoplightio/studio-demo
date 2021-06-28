@@ -43,7 +43,6 @@ paths:
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
       parameters:
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/contentType'
       security: []
     post:
       summary: Create Todo
@@ -72,8 +71,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Todos'
         description: Name of the Todo
-      parameters:
-        - $ref: '#/components/parameters/contentType'
       security:
         - API Key: []
   '/todos/{id}':
@@ -120,8 +117,6 @@ paths:
         Update a single todo using an ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
-      parameters:
-        - $ref: '#/components/parameters/contentType'
       security:
         - API Key: []
     delete:
@@ -192,8 +187,6 @@ paths:
         Get a user by ID
 
         *Markdown is supported in descriptions. Add information here for users to get accustomed to endpoints*
-      parameters:
-        - $ref: '#/components/parameters/contentType'
       security: []
     parameters: []
     delete:
@@ -233,8 +226,6 @@ paths:
             examples: {}
       tags:
         - Users
-      parameters:
-        - $ref: '#/components/parameters/contentType'
       security:
         - API Key: []
 components:
@@ -242,7 +233,6 @@ components:
     Todos:
       description: I'm a model's description.
       type: object
-      x-examples: {}
       title: Todo
       properties:
         id:
@@ -326,14 +316,6 @@ components:
       schema:
         type: number
       description: Return a limited set of results *I'm a shared parameter. I can be reused in multiple endpoints!*
-    contentType:
-      name: Content-Type
-      in: header
-      required: true
-      schema:
-        type: string
-        default: application/json
-      description: application/json
     ID:
       name: id
       in: path
